@@ -33,7 +33,8 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     id: 'Gold',
     name: 'Gold Jewellery',
     tagline: 'Timeless 22K & 18K Hallmarked Elegance',
-    description: 'Impeccably crafted yellow, rose, and antique gold treasures certified with authentic BIS hallmark for everlasting radiance.',
+    description:
+      'Impeccably crafted yellow, rose, and antique gold treasures certified with authentic BIS hallmark for everlasting radiance.',
     image: '/images/category-gold.jpg',
     subProducts: ['Ring', 'Earrings', 'Necklaces', 'Bangles', 'Anklet', 'Idols'],
     bannerHighlight: 'BIS 916 Hallmarked Pure Gold',
@@ -43,7 +44,8 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     id: 'Silver',
     name: 'Silver Jewellery',
     tagline: '925 Pure Sterling Silver Splendor',
-    description: 'Contemporary and traditional sterling silver masterpieces with tarnish-resistant rhodium finish, crafted for modern royalty.',
+    description:
+      'Contemporary and traditional sterling silver masterpieces with tarnish-resistant rhodium finish, crafted for modern royalty.',
     image: '/images/category-silver.jpg',
     subProducts: ['Ring', 'Anklet', 'Earrings', 'Necklaces', 'Bangles', 'Idols'],
     bannerHighlight: '92.5% Pure Sterling Silver',
@@ -53,7 +55,8 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     id: 'Electroplated',
     name: 'Electroplated Luxury',
     tagline: 'Micron Gold & Rhodium Finish Artifacts',
-    description: 'Premium anti-tarnish electroplated creations on royal brass with triple-layer 18K micron gold and platinum luster.',
+    description:
+      'Premium anti-tarnish electroplated creations on royal brass with triple-layer 18K micron gold and platinum luster.',
     image: '/images/category-electroplated.jpg',
     subProducts: ['Ring', 'Earrings', 'Necklaces', 'Bangles', 'Anklet'],
     bannerHighlight: 'Triple Micron 18K Gold Plated',
@@ -63,7 +66,8 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     id: 'Utensils',
     name: 'Utensils & Puja Ware',
     tagline: 'Sacred Silver & Royal Dinnerware',
-    description: 'Consecrated pure silver puja thalis, kalash, bowls, glasses, and ceremonial sets crafted to bring auspicious blessings to every home.',
+    description:
+      'Consecrated pure silver puja thalis, kalash, bowls, glasses, and ceremonial sets crafted to bring auspicious blessings to every home.',
     image: '/images/category-utensils.jpg',
     subProducts: ['Utensils', 'Idols'],
     bannerHighlight: 'Pure 999 & 925 Silver Utensils',
@@ -73,7 +77,8 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     id: 'Idols',
     name: 'Divine Idols & Murti',
     tagline: 'Auspicious Silver & Gold Consecrated Idols',
-    description: 'Sculpted by generational temple artisans — Lord Ganesha, Goddess Lakshmi, and Bal Gopal in pure sterling silver and gold finish.',
+    description:
+      'Sculpted by generational temple artisans — Lord Ganesha, Goddess Lakshmi, and Bal Gopal in pure sterling silver and gold finish.',
     image: '/images/category-idols.jpg',
     subProducts: ['Idols', 'Utensils'],
     bannerHighlight: 'Temple Artisan Sculpted Idols',
@@ -108,7 +113,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Bestseller',
     purity: '18K Yellow Gold with Solitaire Diamond',
     weight: '3.80 grams',
-    description: 'An enchanting open-heart pendant crafted in warm gold, adorned with shimmering pavé accents and a floating diamond solitaire.',
+    description:
+      'An enchanting open-heart pendant crafted in warm gold, adorned with shimmering pavé accents and a floating diamond solitaire.',
     inStock: true,
     featured: true,
   },
@@ -126,7 +132,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Trending',
     purity: '22K (916 BIS Hallmarked)',
     weight: '6.20 grams',
-    description: 'An exquisite stack of handcrafted 22K gold rings pavé-set with brilliant American diamonds, wearable individually or nested.',
+    description:
+      'An exquisite stack of handcrafted 22K gold rings pavé-set with brilliant American diamonds, wearable individually or nested.',
     inStock: true,
     featured: true,
   },
@@ -144,7 +151,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Bridal Pick',
     purity: '22K (916 BIS Hallmarked)',
     weight: '8.80 grams',
-    description: 'Traditional Indian bride bridal payal with gentle musical bells and delicate handcrafted filigree chains.',
+    description:
+      'Traditional Indian bride bridal payal with gentle musical bells and delicate handcrafted filigree chains.',
     inStock: true,
     featured: true,
   },
@@ -162,7 +170,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Auspicious Festive',
     purity: '24K Gold Plated on 925 Pure Silver Core',
     weight: '32.0 grams',
-    description: 'Sacred consecration for Diwali, Griha Pravesh, and home temple shrine featuring intricately detailed Laxmi-Ganesha blessings.',
+    description:
+      'Sacred consecration for Diwali, Griha Pravesh, and home temple shrine featuring intricately detailed Laxmi-Ganesha blessings.',
     inStock: true,
     featured: true,
   },
@@ -180,7 +189,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Bestseller',
     purity: '22K (916 BIS Hallmarked)',
     weight: '11.20 grams',
-    description: 'Majestic dome jhumkas featuring delicate floral filigree, emerald stone drops, and radiant gold bead hangings.',
+    description:
+      'Majestic dome jhumkas featuring delicate floral filigree, emerald stone drops, and radiant gold bead hangings.',
     inStock: true,
     featured: true,
   },
@@ -198,7 +208,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Heritage Masterpiece',
     purity: '22K (916 BIS Hallmarked)',
     weight: '36.50 grams',
-    description: 'Heirloom South Indian temple bridal choker studded with natural uncut polki stones and radiant south sea pearls.',
+    description:
+      'Heirloom South Indian temple bridal choker studded with natural uncut polki stones and radiant south sea pearls.',
     inStock: true,
     featured: true,
   },
@@ -216,7 +227,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Trending',
     purity: '22K (916 BIS Hallmarked)',
     weight: '19.80 grams',
-    description: 'Hand-carved screw-clasp antique kada adorned with ruby motifs and peacock engraving.',
+    description:
+      'Hand-carved screw-clasp antique kada adorned with ruby motifs and peacock engraving.',
     inStock: true,
   },
 
@@ -235,7 +247,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Trending',
     purity: '925 Sterling Silver',
     weight: '3.20 grams',
-    description: 'High-grade cubic zirconia solitaire crafted in solid 925 sterling silver with tarnish-free platinum plating.',
+    description:
+      'High-grade cubic zirconia solitaire crafted in solid 925 sterling silver with tarnish-free platinum plating.',
     inStock: true,
     featured: true,
   },
@@ -253,7 +266,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Top Rated',
     purity: '925 Sterling Silver',
     weight: '24.50 grams',
-    description: 'Vintage handcrafted tribal silver payal with sweet acoustic ghungroos and authentic tribal motif links.',
+    description:
+      'Vintage handcrafted tribal silver payal with sweet acoustic ghungroos and authentic tribal motif links.',
     inStock: true,
     featured: true,
   },
@@ -271,7 +285,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Sacred Blessing',
     purity: '999 Fine Silver (99.9% Purity)',
     weight: '65.00 grams',
-    description: 'Auspicious Bal Gopal idol in meditative butter-holding posture. Ideal for Janmashtami, temple pooja, and auspicious gifting.',
+    description:
+      'Auspicious Bal Gopal idol in meditative butter-holding posture. Ideal for Janmashtami, temple pooja, and auspicious gifting.',
     inStock: true,
     featured: true,
   },
@@ -289,7 +304,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Handmade',
     purity: '925 Sterling Silver',
     weight: '5.80 grams',
-    description: 'Glowing handcrafted 925 sterling silver temple jhumkas with delicate acoustic pearls and floral filigree.',
+    description:
+      'Glowing handcrafted 925 sterling silver temple jhumkas with delicate acoustic pearls and floral filigree.',
     inStock: true,
   },
   {
@@ -306,7 +322,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Bestseller',
     purity: '925 Sterling Silver',
     weight: '8.40 grams',
-    description: 'Minimalist double-layer chain with diamond-cut faceted beads for effortless everyday radiance.',
+    description:
+      'Minimalist double-layer chain with diamond-cut faceted beads for effortless everyday radiance.',
     inStock: true,
   },
 
@@ -325,7 +342,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Anti-Tarnish',
     purity: '18K Triple Micron Gold Plated',
     weight: '4.10 grams',
-    description: 'Hydro-thermal faceted emerald gemstone surrounded by pavé halos with guaranteed 2-year anti-tarnish coating.',
+    description:
+      'Hydro-thermal faceted emerald gemstone surrounded by pavé halos with guaranteed 2-year anti-tarnish coating.',
     inStock: true,
   },
   {
@@ -342,7 +360,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Bestseller',
     purity: '18K Micron Gold & Rhodium',
     weight: '5.20 grams',
-    description: 'Gleaming huggie hoops encrusted inside and out with brilliant Swiss crystals. Hypoallergenic and skin-safe.',
+    description:
+      'Gleaming huggie hoops encrusted inside and out with brilliant Swiss crystals. Hypoallergenic and skin-safe.',
     inStock: true,
     featured: true,
   },
@@ -360,7 +379,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Gift Favorite',
     purity: '18K Yellow Gold Micron Plated',
     weight: '6.70 grams',
-    description: 'A shimmering heart motif pendant with matched studs, plated in thick 18K gold layer for durable luster.',
+    description:
+      'A shimmering heart motif pendant with matched studs, plated in thick 18K gold layer for durable luster.',
     inStock: true,
   },
   {
@@ -377,7 +397,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Summer Charm',
     purity: 'Micron Gold Plated Brass',
     weight: '3.60 grams',
-    description: 'Water-resistant, skin-friendly dainty charm anklet featuring celestial star drops and lobster lock.',
+    description:
+      'Water-resistant, skin-friendly dainty charm anklet featuring celestial star drops and lobster lock.',
     inStock: true,
   },
 
@@ -396,7 +417,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Wedding & Puja Must-Have',
     purity: '925 Sterling Silver Hallmarked',
     weight: '380.00 grams',
-    description: 'Includes 10-inch engraved Thali, Diya, Agarbatti stand, Chandan Vati, Ghanti, Panchamrit Spoon, and Kalash.',
+    description:
+      'Includes 10-inch engraved Thali, Diya, Agarbatti stand, Chandan Vati, Ghanti, Panchamrit Spoon, and Kalash.',
     inStock: true,
     featured: true,
   },
@@ -414,7 +436,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Holistic Health',
     purity: '999 Fine Pure Silver',
     weight: '95.00 grams',
-    description: 'Drinking water stored in pure silver tumbler balances Pitta dosha and improves digestion according to ancient Ayurveda.',
+    description:
+      'Drinking water stored in pure silver tumbler balances Pitta dosha and improves digestion according to ancient Ayurveda.',
     inStock: true,
     featured: true,
   },
@@ -432,7 +455,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Griha Pravesh',
     purity: '925 Sterling Silver',
     weight: '175.00 grams',
-    description: 'Traditional embossed Swastika and Om motifs with sacred detachable silver coconut for auspicious ceremonies.',
+    description:
+      'Traditional embossed Swastika and Om motifs with sacred detachable silver coconut for auspicious ceremonies.',
     inStock: true,
   },
   {
@@ -449,7 +473,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Newborn Blessing',
     purity: '999 Fine Pure Silver',
     weight: '70.00 grams',
-    description: 'Smooth rounded anti-bacterial pure silver bowl and baby spoon set presented in luxury royal velvet gift box.',
+    description:
+      'Smooth rounded anti-bacterial pure silver bowl and baby spoon set presented in luxury royal velvet gift box.',
     inStock: true,
   },
 
@@ -468,7 +493,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Bestseller',
     purity: '999 Fine Silver (99.9%)',
     weight: '110.00 grams',
-    description: 'Magnificent hand-finished Lord Ganesha idol with antique highlight work and diamond eye embellishments.',
+    description:
+      'Magnificent hand-finished Lord Ganesha idol with antique highlight work and diamond eye embellishments.',
     inStock: true,
     featured: true,
   },
@@ -486,7 +512,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Sacred Art',
     purity: '925 Sterling Silver with 24K Gold Foil Accents',
     weight: '215.00 grams',
-    description: 'Fine filigree tree backdrop with flute and peacock feather detailing, hand-polished to a heavenly gleam.',
+    description:
+      'Fine filigree tree backdrop with flute and peacock feather detailing, hand-polished to a heavenly gleam.',
     inStock: true,
   },
   {
@@ -503,7 +530,8 @@ export const PRODUCTS_DATA: Product[] = [
     tag: 'Deepavali Special',
     purity: '999 Pure Fine Silver',
     weight: '140.00 grams',
-    description: 'Shower of gold coins flowing from the divine hand, crafted according to Shilpa Shastra temple geometry.',
+    description:
+      'Shower of gold coins flowing from the divine hand, crafted according to Shilpa Shastra temple geometry.',
     inStock: true,
   },
 ];
@@ -513,31 +541,37 @@ export const TESTIMONIALS_DATA = [
     id: '1',
     name: 'Priya Sharma',
     city: 'Mumbai',
-    review: 'The 22K Royal Solitaire ring looks even more breathtaking in person than the website photos. The BIS Hallmark certification gave me complete confidence.',
+    review:
+      'The 22K Royal Solitaire ring looks even more breathtaking in person than the website photos. The BIS Hallmark certification gave me complete confidence.',
     rating: 5,
     verified: true,
     itemPurchased: 'Royal Solitaire 22K Gold Ring',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    image:
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
   },
   {
     id: '2',
     name: 'Aayush Kapoor',
     city: 'New Delhi',
-    review: 'Ordered the 7-piece Silver Puja Thali set for my parents’ 30th anniversary. Exceptional packaging, certificate of purity, and authentic temple finish.',
+    review:
+      'Ordered the 7-piece Silver Puja Thali set for my parents’ 30th anniversary. Exceptional packaging, certificate of purity, and authentic temple finish.',
     rating: 5,
     verified: true,
     itemPurchased: 'Royal Heritage 925 Pure Silver Puja Thali Set',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+    image:
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
   },
   {
     id: '3',
     name: 'Sunita Reddy',
     city: 'Hyderabad',
-    review: 'The electroplated emerald ring and silver payal are gorgeous! The craftsmanship and weight feel delightfully luxurious. Fast delivery and secure transit!',
+    review:
+      'The electroplated emerald ring and silver payal are gorgeous! The craftsmanship and weight feel delightfully luxurious. Fast delivery and secure transit!',
     rating: 5,
     verified: true,
     itemPurchased: 'Imperial Emerald Ring & Chandrika Payal',
-    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80',
+    image:
+      'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80',
   },
 ];
 

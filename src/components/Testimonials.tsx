@@ -9,7 +9,6 @@ export const Testimonials: React.FC = () => {
   return (
     <section className="py-20 bg-[#FBF9F5] border-t border-[#C59B27]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Title */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#E5C378]/25 text-[#8C6411] text-xs font-semibold uppercase tracking-wider mb-3">
@@ -20,7 +19,8 @@ export const Testimonials: React.FC = () => {
             Loved By Thousands
           </h2>
           <p className="mt-2 text-stone-600 text-sm sm:text-base font-light">
-            Real stories from our patrons celebrating engagements, festive pujas, and heirloom milestones.
+            Real stories from our patrons celebrating engagements, festive pujas, and heirloom
+            milestones.
           </p>
         </div>
 
@@ -53,28 +53,19 @@ export const Testimonials: React.FC = () => {
               {/* Reviewer Profile */}
               <div className="pt-5 mt-5 border-t border-stone-100 flex items-center gap-3">
                 <div className="relative w-11 h-11 rounded-full overflow-hidden border border-[#C59B27]/30 shrink-0">
-                  <Image
-                    src={t.image}
-                    alt={t.name}
-                    fill
-                    className="object-cover"
-                  />
+                  <Image src={t.image} alt={t.name} fill className="object-cover" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-[#0B2319] leading-snug">
-                    {t.name}
-                  </h4>
+                  <h4 className="text-sm font-bold text-[#0B2319] leading-snug">{t.name}</h4>
                   <div className="flex items-center gap-1 text-[11px] text-emerald-700 font-medium">
                     <ShieldCheck className="w-3 h-3" />
                     <span>Verified Buyer • {t.city}</span>
                   </div>
                 </div>
               </div>
-
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

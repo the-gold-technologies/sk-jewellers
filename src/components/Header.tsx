@@ -1,13 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import {
-  ShoppingBag,
-  Heart,
-  Menu,
-  X,
-  ChevronDown,
-} from 'lucide-react';
+import { ShoppingBag, Heart, Menu, X, ChevronDown } from 'lucide-react';
 import { CATEGORIES_DATA } from '@/data/jewelleryData';
 
 interface HeaderProps {
@@ -16,8 +10,6 @@ interface HeaderProps {
   onOpenCart: () => void;
   onOpenWishlist: () => void;
   onSelectCategory: (category: string, subProduct?: string) => void;
-  currency: 'INR' | 'USD';
-  onToggleCurrency: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -26,8 +18,6 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenCart,
   onOpenWishlist,
   onSelectCategory,
-  currency,
-  onToggleCurrency,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [shopDropdownOpen, setShopDropdownOpen] = useState(false);
@@ -61,7 +51,6 @@ export const Header: React.FC<HeaderProps> = ({
         }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          
           {/* Left: Luxora Diamond Monogram & Brand Typography */}
           <a href="#hero" className="flex items-center gap-2.5 group">
             {/* Geometric Diamond Wireframe Icon matching Luxora exactly */}
@@ -128,9 +117,7 @@ export const Header: React.FC<HeaderProps> = ({
                     <p className="text-[10px] uppercase font-bold tracking-widest text-[#9E7518]">
                       Precious Categories
                     </p>
-                    <span className="text-[10px] text-stone-400 font-sans">
-                      All BIS Hallmarked
-                    </span>
+                    <span className="text-[10px] text-stone-400 font-sans">All BIS Hallmarked</span>
                   </div>
                   <div className="space-y-3">
                     {CATEGORIES_DATA.map((cat) => (
@@ -165,17 +152,11 @@ export const Header: React.FC<HeaderProps> = ({
               )}
             </div>
 
-            <a
-              href="#categories"
-              className="hover:text-[#C59B27] transition-colors"
-            >
+            <a href="#categories" className="hover:text-[#C59B27] transition-colors">
               Collections
             </a>
 
-            <a
-              href="#heritage"
-              className="hover:text-[#C59B27] transition-colors"
-            >
+            <a href="#heritage" className="hover:text-[#C59B27] transition-colors">
               About Us
             </a>
 
@@ -187,10 +168,7 @@ export const Header: React.FC<HeaderProps> = ({
               Blog
             </a>
 
-            <a
-              href="#contact-footer"
-              className="hover:text-[#C59B27] transition-colors"
-            >
+            <a href="#contact-footer" className="hover:text-[#C59B27] transition-colors">
               Contact
             </a>
           </nav>
@@ -232,7 +210,6 @@ export const Header: React.FC<HeaderProps> = ({
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
-
         </div>
 
         {/* Mobile menu dropdown */}

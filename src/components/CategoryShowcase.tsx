@@ -1,21 +1,16 @@
-"use client";
+'use client';
 
-import React from "react";
-import Image from "next/image";
-import { CATEGORIES_DATA } from "@/data/jewelleryData";
+import React from 'react';
+import Image from 'next/image';
+import { CATEGORIES_DATA } from '@/data/jewelleryData';
 
 interface CategoryShowcaseProps {
   onSelectCategory: (categoryId: string, subProduct?: string) => void;
 }
 
-export const CategoryShowcase: React.FC<CategoryShowcaseProps> = ({
-  onSelectCategory,
-}) => {
+export const CategoryShowcase: React.FC<CategoryShowcaseProps> = ({ onSelectCategory }) => {
   return (
-    <section
-      id="categories"
-      className="py-14 sm:py-18 bg-[#FBF9F5] border-b border-[#C59B27]/15"
-    >
+    <section id="categories" className="py-14 sm:py-18 bg-[#FBF9F5] border-b border-[#C59B27]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header matching Aurelia reference */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
@@ -53,7 +48,7 @@ export const CategoryShowcase: React.FC<CategoryShowcaseProps> = ({
 
               {/* Title & Badge */}
               <h3 className="font-serif text-sm sm:text-base font-bold text-[#1A1A1A] group-hover:text-[#9E7518] transition-colors mt-3">
-                {cat.name.replace(" Jewellery", "")}
+                {cat.name.replace(' Jewellery', '')}
               </h3>
               <span className="text-[10px] text-stone-400 uppercase tracking-wider mt-0.5 font-medium">
                 {cat.subProducts.length} Sub-products
@@ -68,10 +63,8 @@ export const CategoryShowcase: React.FC<CategoryShowcaseProps> = ({
             href="#bestsellers"
             onClick={(e) => {
               e.preventDefault();
-              onSelectCategory("All");
-              document
-                .getElementById("bestsellers")
-                ?.scrollIntoView({ behavior: "smooth" });
+              onSelectCategory('All');
+              document.getElementById('bestsellers')?.scrollIntoView({ behavior: 'smooth' });
             }}
             className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 bg-[#7D806C] hover:bg-[#6B6E5A] text-white text-[11px] sm:text-[12px] font-medium tracking-[0.22em] uppercase transition-all duration-300 shadow-xs hover:shadow-md cursor-pointer"
           >

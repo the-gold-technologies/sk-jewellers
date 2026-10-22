@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -14,68 +14,96 @@ const INSTAGRAM_POSTS = [
   {
     id: 1,
     img: '/images/rings-stack.jpg',
-    handle: '@aureliajewels',
-    title: '#AureliaBrides 22K Gold Diamond Rings',
+    handle: '@luxorajewelry',
+    title: '#LuxoraBrides 22K Gold Diamond Rings',
   },
   {
     id: 2,
     img: '/images/gold-choker.jpg',
-    handle: '@aureliajewels',
+    handle: '@luxorajewelry',
     title: 'Heritage Temple Polki Choker in Pure Gold',
   },
   {
     id: 3,
     img: '/images/gold-jhumkas.jpg',
-    handle: '@aureliajewels',
+    handle: '@luxorajewelry',
     title: 'Padmavati Royal Gold Dome Jhumkas',
   },
   {
     id: 4,
     img: '/images/silver-puja-thali.jpg',
-    handle: '@aureliajewels',
+    handle: '@luxorajewelry',
     title: 'Pure Silver Puja Thali Setup for Festive Blessings',
   },
   {
     id: 5,
     img: '/images/silver-payal.jpg',
-    handle: '@aureliajewels',
+    handle: '@luxorajewelry',
     title: 'Handcrafted Chandrika 925 Silver Ghungroo Payal',
   },
   {
     id: 6,
     img: '/images/electro-emerald-ring.jpg',
-    handle: '@aureliajewels',
+    handle: '@luxorajewelry',
     title: 'Imperial Emerald 18K Micron Plated Cocktail Ring',
   },
   {
     id: 7,
     img: '/images/heart-pendant.jpg',
-    handle: '@aureliajewels',
+    handle: '@luxorajewelry',
     title: 'Heart Luminary Diamond Pavé Pendant',
   },
   {
     id: 8,
     img: '/images/silver-tumbler.jpg',
-    handle: '@aureliajewels',
+    handle: '@luxorajewelry',
     title: 'Ayurvedic 999 Pure Silver Health Tumbler',
   },
   {
     id: 9,
     img: '/images/electro-anklet.jpg',
-    handle: '@aureliajewels',
+    handle: '@luxorajewelry',
     title: 'Dainty Starburst Electroplated Summer Anklet',
   },
   {
     id: 10,
     img: '/images/silver-kalash.jpg',
-    handle: '@aureliajewels',
+    handle: '@luxorajewelry',
     title: 'Sacred Silver Mangal Kalash & Nariyal',
   },
 ];
 
 export const InstagramCommunity: React.FC = () => {
-  // Duplicate array once for seamless infinite right-to-left loop
-  const displayPosts = [...INSTAGRAM_POSTS, ...INSTAGRAM_POSTS];
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const isHoveredRef = useRef(false);
+
+  // Duplicated array for seamless loop
+  const displayPosts = [...INSTAGRAM_POSTS, ...INSTAGRAM_POSTS, ...INSTAGRAM_POSTS];
+
+  // Guaranteed JavaScript requestAnimationFrame smooth right-to-left auto-scroll
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    let animId: number;
+    // Auto-scroll speed: ~1.2px per frame (~70px/sec)
+    const speed = 1.2;
+
+    const autoScroll = () => {
+      if (el && !isHoveredRef.current) {
+        el.scrollLeft += speed;
+        // When we've scrolled past one-third of the total scroll width, seamlessly reset
+        const oneThird = el.scrollWidth / 3;
+        if (el.scrollLeft >= oneThird) {
+          el.scrollLeft = el.scrollLeft - oneThird;
+        }
+      }
+      animId = requestAnimationFrame(autoScroll);
+    };
+
+    animId = requestAnimationFrame(autoScroll);
+    return () => cancelAnimationFrame(animId);
+  }, []);
 
   return (
     <section className="py-16 bg-[#FAF7F2] border-t border-[#C59B27]/15 overflow-hidden">
@@ -103,13 +131,31 @@ export const InstagramCommunity: React.FC = () => {
         </div>
       </div>
 
-      {/* Auto-scrolling Infinite Marquee (Right to Left) */}
-      <div className="relative w-full overflow-hidden">
-        {/* Soft edge fade masks for high-end luxury feel */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-[#FAF7F2] to-transparent z-10" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-[#FAF7F2] to-transparent z-10" />
+      {/* Auto-scrolling Slider Container (Right to Left) */}
+      <div
+        className="relative w-full overflow-hidden"
+        onMouseEnter={() => {
+          isHoveredRef.current = true;
+        }}
+        onMouseLeave={() => {
+          isHoveredRef.current = false;
+        }}
+        onTouchStart={() => {
+          isHoveredRef.current = true;
+        }}
+        onTouchEnd={() => {
+          isHoveredRef.current = false;
+        }}
+      >
+        {/* Soft edge fade masks for luxury vignette look */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-24 bg-gradient-to-r from-[#FAF7F2] to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-24 bg-gradient-to-l from-[#FAF7F2] to-transparent z-10" />
 
-        <div className="animate-marquee-rtl gap-4 sm:gap-5 px-4">
+        <div
+          ref={scrollRef}
+          className="flex flex-row flex-nowrap gap-4 sm:gap-5 px-6 overflow-x-auto scrollbar-none scroll-smooth select-none py-2"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
           {displayPosts.map((post, idx) => (
             <div
               key={`${post.id}-${idx}`}

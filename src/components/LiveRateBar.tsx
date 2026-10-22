@@ -9,7 +9,6 @@ export const LiveRateBar: React.FC = () => {
     <section id="live-rates" className="bg-[#0B2319] text-white py-4 border-y border-[#C59B27]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          
           {/* Label */}
           <div className="flex items-center gap-2.5">
             <span className="relative flex h-2.5 w-2.5">
@@ -42,10 +41,11 @@ export const LiveRateBar: React.FC = () => {
             <div className="flex items-center gap-2 bg-[#13392A] px-3.5 py-1.5 rounded-lg border border-[#C59B27]/25">
               <RefreshCw className="w-3.5 h-3.5 text-cyan-400" />
               <span className="text-stone-300">Silver 999 Fine:</span>
-              <strong className="text-cyan-200 font-semibold">{LIVE_BULLION_RATES.silver999}</strong>
+              <strong className="text-cyan-200 font-semibold">
+                {LIVE_BULLION_RATES.silver999}
+              </strong>
             </div>
           </div>
-
         </div>
       </div>
     </section>

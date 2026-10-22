@@ -2,16 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import {
-  X,
-  ShoppingBag,
-  Trash2,
-  ArrowRight,
-  ShieldCheck,
-  Tag,
-  Check,
-  Truck,
-} from 'lucide-react';
+import { X, ShoppingBag, Trash2, ArrowRight, ShieldCheck, Tag, Truck } from 'lucide-react';
 import { Product } from '@/data/jewelleryData';
 
 export interface CartItem {
@@ -43,10 +34,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
   if (!isOpen) return null;
 
-  const subtotal = items.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,
-    0
-  );
+  const subtotal = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
 
   const discountAmount = Math.round(subtotal * (appliedDiscount / 100));
   const total = subtotal - discountAmount;
@@ -73,7 +61,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   const handleCheckout = () => {
     setIsCheckingOut(true);
     setTimeout(() => {
-      alert('Order simulated successfully! In a live environment, this connects to Razorpay / Stripe gateway.');
+      alert(
+        'Order simulated successfully! In a live environment, this connects to Razorpay / Stripe gateway.'
+      );
       setIsCheckingOut(false);
       onClose();
     }, 1200);
@@ -89,7 +79,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
         <div className="w-screen max-w-md bg-[#FAF7F2] shadow-2xl flex flex-col justify-between border-l border-[#C59B27]/30">
-          
           {/* Header */}
           <div className="p-5 border-b border-[#C59B27]/20 flex items-center justify-between bg-white">
             <div className="flex items-center gap-2">
@@ -130,7 +119,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               <div className="text-center py-16 space-y-3">
                 <ShoppingBag className="w-12 h-12 text-stone-300 mx-auto" />
                 <p className="font-serif text-base text-stone-600">Your bag is currently empty.</p>
-                <p className="text-xs text-stone-400">Explore Gold, Silver, or Utensil collections to add items.</p>
+                <p className="text-xs text-stone-400">
+                  Explore Gold, Silver, or Utensil collections to add items.
+                </p>
                 <button
                   onClick={onClose}
                   className="mt-2 bg-[#0B2319] text-[#FAF7F2] text-xs font-medium px-5 py-2.5 rounded-lg hover:bg-[#16402F]"
@@ -200,7 +191,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           {/* Footer & Checkout Area */}
           {items.length > 0 && (
             <div className="p-5 bg-white border-t border-[#C59B27]/20 space-y-4">
-              
               {/* Promo code input */}
               <form onSubmit={handleApplyPromo} className="space-y-1">
                 <div className="flex gap-2">
@@ -222,9 +212,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   </button>
                 </div>
                 {promoMessage && (
-                  <p className="text-[11px] text-emerald-700 font-medium">
-                    {promoMessage}
-                  </p>
+                  <p className="text-[11px] text-emerald-700 font-medium">{promoMessage}</p>
                 )}
               </form>
 
@@ -272,7 +260,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               </div>
             </div>
           )}
-
         </div>
       </div>
     </div>

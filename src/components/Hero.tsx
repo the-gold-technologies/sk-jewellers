@@ -1,18 +1,15 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import Image from "next/image";
-import { ArrowRight, Play, Truck, ShieldCheck, Award, X } from "lucide-react";
+import React, { useState } from 'react';
+import Image from 'next/image';
+import { ArrowRight, Play, Truck, ShieldCheck, Award, X } from 'lucide-react';
 
 interface HeroProps {
   onExploreClick: () => void;
   onCategoryClick: (category: string) => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({
-  onExploreClick,
-  onCategoryClick,
-}) => {
+export const Hero: React.FC<HeroProps> = ({ onExploreClick, onCategoryClick }) => {
   const [showVideoModal, setShowVideoModal] = useState(false);
 
   return (
@@ -70,12 +67,7 @@ export const Hero: React.FC<HeroProps> = ({
                 strokeLinecap="round"
               />
               <circle cx="12" cy="11" r="2.2" fill="currentColor" />
-              <path
-                d="M26 9 Q 31 5 36 9"
-                stroke="currentColor"
-                strokeWidth="1"
-                fill="none"
-              />
+              <path d="M26 9 Q 31 5 36 9" stroke="currentColor" strokeWidth="1" fill="none" />
 
               {/* Diamond Center 4-Point Star */}
               <path
@@ -91,21 +83,15 @@ export const Hero: React.FC<HeroProps> = ({
                 strokeLinecap="round"
               />
               <circle cx="208" cy="11" r="2.2" fill="currentColor" />
-              <path
-                d="M184 9 Q 189 5 194 9"
-                stroke="currentColor"
-                strokeWidth="1"
-                fill="none"
-              />
+              <path d="M184 9 Q 189 5 194 9" stroke="currentColor" strokeWidth="1" fill="none" />
             </svg>
           </div>
 
           {/* 4. Subtitle with Extra 2 Lines of Rich Description */}
           <p className="text-stone-600 text-sm sm:text-[17px] font-light leading-relaxed max-w-[485px] mx-auto lg:mx-0">
-            Discover exquisite jewelry crafted to celebrate every precious
-            moment of your life. Handcrafted in pure 22K BIS Hallmarked Gold,
-            925 Sterling Silver, anti-tarnish electroplated luxury, and sacred
-            puja silverware.
+            Discover exquisite jewelry crafted to celebrate every precious moment of your life.
+            Handcrafted in pure 22K BIS Hallmarked Gold, 925 Sterling Silver, anti-tarnish
+            electroplated luxury, and sacred puja silverware.
           </p>
 
           {/* 5. Dual Action Buttons */}
@@ -133,15 +119,13 @@ export const Hero: React.FC<HeroProps> = ({
 
           {/* Category Quick Badges */}
           <div className="pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs text-stone-500">
-            <span className="font-serif italic text-sm mr-1 text-stone-400">
-              Collections:
-            </span>
+            <span className="font-serif italic text-sm mr-1 text-stone-400">Collections:</span>
             {[
-              { id: "Gold", label: "Gold Jewellery" },
-              { id: "Silver", label: "Sterling Silver" },
-              { id: "Electroplated", label: "Electroplated" },
-              { id: "Utensils", label: "Puja Utensils" },
-              { id: "Idols", label: "Divine Idols" },
+              { id: 'Gold', label: 'Gold Jewellery' },
+              { id: 'Silver', label: 'Sterling Silver' },
+              { id: 'Electroplated', label: 'Electroplated' },
+              { id: 'Utensils', label: 'Puja Utensils' },
+              { id: 'Idols', label: 'Divine Idols' },
             ].map((item) => (
               <button
                 key={item.id}
@@ -263,9 +247,8 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
             </div>
             <p className="text-xs text-stone-600 leading-relaxed font-light">
-              Every curve, prong, and finish is inspected by certified
-              gemologists to ensure BIS Hallmark authenticity and enduring
-              heirloom brilliance.
+              Every curve, prong, and finish is inspected by certified gemologists to ensure BIS
+              Hallmark authenticity and enduring heirloom brilliance.
             </p>
           </div>
         </div>

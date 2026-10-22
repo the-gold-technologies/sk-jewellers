@@ -41,7 +41,6 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
         <div className="w-screen max-w-md bg-[#FAF7F2] shadow-2xl flex flex-col justify-between border-l border-[#C59B27]/30">
-          
           {/* Header */}
           <div className="p-5 border-b border-[#C59B27]/20 flex items-center justify-between bg-white">
             <div className="flex items-center gap-2">
@@ -64,7 +63,9 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
               <div className="text-center py-20 space-y-3">
                 <Heart className="w-12 h-12 text-stone-300 mx-auto" />
                 <p className="font-serif text-base text-stone-600">Your wishlist is empty.</p>
-                <p className="text-xs text-stone-400">Tap the heart icon on any jewelry piece to save it for later.</p>
+                <p className="text-xs text-stone-400">
+                  Tap the heart icon on any jewelry piece to save it for later.
+                </p>
                 <button
                   onClick={onClose}
                   className="mt-2 bg-[#0B2319] text-[#FAF7F2] text-xs font-medium px-5 py-2.5 rounded-lg hover:bg-[#16402F]"
@@ -79,12 +80,7 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
                   className="bg-white p-3.5 rounded-xl border border-stone-200 shadow-xs flex gap-3.5 items-center"
                 >
                   <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-stone-100 shrink-0 border border-stone-200">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-cover"
-                    />
+                    <Image src={product.image} alt={product.name} fill className="object-cover" />
                   </div>
 
                   <div className="flex-1 min-w-0">
@@ -134,7 +130,6 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
               </button>
             </div>
           )}
-
         </div>
       </div>
     </div>

@@ -2,17 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import {
-  X,
-  Star,
-  ShieldCheck,
-  Truck,
-  Heart,
-  ShoppingBag,
-  Sparkles,
-  Check,
-  Scale,
-} from 'lucide-react';
+import { X, Star, Heart, ShoppingBag, Sparkles, Check } from 'lucide-react';
 import { Product } from '@/data/jewelleryData';
 
 interface QuickViewModalProps {
@@ -67,7 +57,6 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto animate-fadeIn">
       <div className="relative bg-[#FAF7F2] rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl border border-[#C59B27]/40 max-h-[90vh] flex flex-col md:flex-row">
-        
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -79,12 +68,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
         {/* Left Column: Image & Thumbnails */}
         <div className="md:w-1/2 p-6 flex flex-col justify-between bg-white border-r border-[#C59B27]/20">
           <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-stone-100 border border-stone-200">
-            <Image
-              src={currentImg}
-              alt={product.name}
-              fill
-              className="object-cover"
-            />
+            <Image src={currentImg} alt={product.name} fill className="object-cover" />
             {product.tag && (
               <span className="absolute top-3 left-3 bg-[#0B2319] text-[#E5C378] text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border border-[#C59B27]/30">
                 {product.tag}
@@ -97,7 +81,9 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
             <button
               onClick={() => setActiveImage(product.image)}
               className={`relative w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${
-                currentImg === product.image ? 'border-[#C59B27] scale-105' : 'border-stone-200 opacity-70'
+                currentImg === product.image
+                  ? 'border-[#C59B27] scale-105'
+                  : 'border-stone-200 opacity-70'
               }`}
             >
               <Image src={product.image} alt="View 1" fill className="object-cover" />
@@ -105,7 +91,9 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
             <button
               onClick={() => setActiveImage(product.secondaryImage)}
               className={`relative w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${
-                currentImg === product.secondaryImage ? 'border-[#C59B27] scale-105' : 'border-stone-200 opacity-70'
+                currentImg === product.secondaryImage
+                  ? 'border-[#C59B27] scale-105'
+                  : 'border-stone-200 opacity-70'
               }`}
             >
               <Image src={product.secondaryImage} alt="View 2" fill className="object-cover" />
@@ -118,7 +106,9 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#8C6411]">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>{product.category} Jewellery • {product.subProduct}</span>
+              <span>
+                {product.category} Jewellery • {product.subProduct}
+              </span>
             </div>
             <h2 className="font-serif text-2xl font-bold text-[#0B2319] mt-1 leading-snug">
               {product.name}
@@ -131,26 +121,29 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                   <Star
                     key={i}
                     className={`w-3.5 h-3.5 ${
-                      i < Math.floor(product.rating) ? 'fill-amber-500 text-amber-500' : 'text-stone-300'
+                      i < Math.floor(product.rating)
+                        ? 'fill-amber-500 text-amber-500'
+                        : 'text-stone-300'
                     }`}
                   />
                 ))}
               </div>
               <span className="text-xs font-bold text-stone-800">{product.rating}</span>
-              <span className="text-xs text-stone-500">({product.reviewsCount} verified reviews)</span>
+              <span className="text-xs text-stone-500">
+                ({product.reviewsCount} verified reviews)
+              </span>
             </div>
           </div>
 
           {/* Price */}
           <div className="flex items-baseline gap-3 pt-2 border-t border-stone-200">
-            <span className="text-2xl font-bold text-[#0B2319]">
-              {formatPrice(product.price)}
-            </span>
+            <span className="text-2xl font-bold text-[#0B2319]">{formatPrice(product.price)}</span>
             <span className="text-sm text-stone-400 line-through">
               {formatPrice(product.originalPrice)}
             </span>
             <span className="text-xs font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
-              Save {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
+              Save{' '}
+              {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
             </span>
           </div>
 
@@ -171,7 +164,9 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
             </div>
             <div className="flex justify-between text-stone-600">
               <span className="font-medium text-stone-500">Making &amp; Hallmarking:</span>
-              <span className="font-semibold text-emerald-700">BIS HUID Certified 100% Genuine</span>
+              <span className="font-semibold text-emerald-700">
+                BIS HUID Certified 100% Genuine
+              </span>
             </div>
           </div>
 
@@ -197,9 +192,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
               </button>
             </div>
             {pincodeStatus && (
-              <p className="text-[11px] text-emerald-700 font-medium mt-1">
-                {pincodeStatus}
-              </p>
+              <p className="text-[11px] text-emerald-700 font-medium mt-1">{pincodeStatus}</p>
             )}
           </form>
 
@@ -258,9 +251,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
               )}
             </button>
           </div>
-
         </div>
-
       </div>
     </div>
   );

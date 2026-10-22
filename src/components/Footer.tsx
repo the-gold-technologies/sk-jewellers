@@ -1,41 +1,73 @@
 'use client';
 
-import React from 'react';
-import { Sparkles, ShieldCheck, MapPin, Phone, Mail } from 'lucide-react';
+import { ShieldCheck, Phone, Mail, MapPin } from 'lucide-react';
 
 interface FooterProps {
-  onSelectCategory: (category: string, subProduct?: string) => void;
+  onSelectCategory?: (category: string, subProduct?: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-[#071711] text-stone-300 pt-16 pb-12 border-t border-[#C59B27]/30">
+    <footer
+      id="contact-footer"
+      className="bg-[#FAF5EE] text-stone-700 pt-16 pb-10 border-t border-[#E8DAC2]"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-stone-800">
-          
-          {/* Col 1: Brand & Bio */}
-          <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#9E7518] via-[#C59B27] to-[#E5C378] flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-white" />
+        {/* Main Clean 3-Column Luxury Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-stone-200/80">
+          {/* Column 1: Brand & Heritage (5 cols) */}
+          <div className="lg:col-span-5 space-y-4">
+            {/* Brand Logo matching Navbar exactly */}
+            <div className="flex items-center gap-2.5">
+              <div className="relative w-9 h-9 flex items-center justify-center shrink-0">
+                <svg viewBox="0 0 28 28" fill="none" className="w-8 h-8 text-[#C59B27]">
+                  <polygon
+                    points="7,4 21,4 26,12 14,26 2,12"
+                    fill="#F7EEDF"
+                    stroke="#C59B27"
+                    strokeWidth="1.5"
+                    strokeLinejoin="round"
+                  />
+                  <line x1="2" y1="12" x2="26" y2="12" stroke="#A67C1E" strokeWidth="1.2" />
+                  <line x1="7" y1="4" x2="14" y2="12" stroke="#A67C1E" strokeWidth="1.2" />
+                  <line x1="21" y1="4" x2="14" y2="12" stroke="#A67C1E" strokeWidth="1.2" />
+                  <line x1="14" y1="12" x2="14" y2="26" stroke="#A67C1E" strokeWidth="1.2" />
+                  <line x1="8" y1="12" x2="14" y2="26" stroke="#A67C1E" strokeWidth="1.2" />
+                  <line x1="20" y1="12" x2="14" y2="26" stroke="#A67C1E" strokeWidth="1.2" />
+                </svg>
               </div>
-              <span className="font-serif text-2xl font-bold tracking-[0.2em] text-[#E5C378]">
-                AURELIA
-              </span>
+              <div className="flex flex-col">
+                <span className="font-serif text-2xl font-bold tracking-[0.18em] text-[#1C1814] leading-none">
+                  LUXORA
+                </span>
+                <span className="text-[8px] uppercase tracking-[0.38em] text-[#9E7518] font-semibold mt-1">
+                  JEWELRY
+                </span>
+              </div>
             </div>
-            <p className="text-xs uppercase tracking-[0.3em] text-stone-400 font-medium">
-              Fine Jewels &amp; Sacred Silver
-            </p>
-            <p className="text-xs text-stone-400 leading-relaxed max-w-sm font-light">
-              Crafting sacred heirlooms, 22K certified hallmarked gold, 925 sterling silver, micron electroplated jewelry, and pure consecrated puja utensils since 1984.
+
+            <p className="text-xs text-stone-600 leading-relaxed max-w-sm font-light">
+              Crafting certified 22K hallmarked gold, 925 sterling silver heirlooms, and consecrated
+              puja silverware since 1984.
             </p>
 
-            <div className="pt-2 flex items-center gap-3">
+            <div className="pt-2 flex items-center gap-2 text-xs text-stone-800 font-medium">
+              <ShieldCheck className="w-4 h-4 text-[#C59B27] shrink-0" />
+              <span>Govt. Registered BIS Hallmarked Jewellery House</span>
+            </div>
+
+            {/* Social Icons */}
+            <div className="pt-2 flex items-center gap-2.5">
               <a
-                href="#"
-                className="w-8 h-8 rounded-full bg-stone-900 hover:bg-[#C59B27] text-stone-300 hover:text-black flex items-center justify-center transition-colors"
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white border border-stone-200/90 hover:border-[#C59B27] hover:text-[#9E7518] text-stone-600 flex items-center justify-center transition-all shadow-2xs"
                 aria-label="Instagram"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -44,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
               </a>
               <a
                 href="#"
-                className="w-8 h-8 rounded-full bg-stone-900 hover:bg-[#C59B27] text-stone-300 hover:text-black flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-full bg-white border border-stone-200/90 hover:border-[#C59B27] hover:text-[#9E7518] text-stone-600 flex items-center justify-center transition-all shadow-2xs"
                 aria-label="Facebook"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -53,7 +85,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
               </a>
               <a
                 href="#"
-                className="w-8 h-8 rounded-full bg-stone-900 hover:bg-[#C59B27] text-stone-300 hover:text-black flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-full bg-white border border-stone-200/90 hover:border-[#C59B27] hover:text-[#9E7518] text-stone-600 flex items-center justify-center transition-all shadow-2xs"
                 aria-label="YouTube"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -61,161 +93,119 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
                 </svg>
               </a>
             </div>
-
-            <div className="pt-2 flex items-center gap-2 text-xs text-emerald-400 font-medium">
-              <ShieldCheck className="w-4 h-4 shrink-0" />
-              <span>Govt. Registered BIS Hallmarked Jewellery House</span>
-            </div>
           </div>
 
-          {/* Col 2: Categories (Gold, Silver, Electroplated, Utensils) */}
-          <div className="space-y-3">
-            <h4 className="font-serif text-sm font-bold text-[#E5C378] uppercase tracking-wider">
-              Precious Categories
+          {/* Column 2: Essential Quick Links (3 cols) */}
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="font-serif text-sm font-bold text-[#1C1917] uppercase tracking-wider">
+              Quick Navigation
             </h4>
-            <ul className="space-y-2 text-xs text-stone-400">
+            <ul className="space-y-2.5 text-xs text-stone-600">
               <li>
                 <button
-                  onClick={() => onSelectCategory('Gold')}
-                  className="hover:text-[#E5C378] transition-colors"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="hover:text-[#9E7518] transition-colors"
                 >
-                  22K &amp; 18K Gold Jewellery
+                  Home
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => onSelectCategory('Silver')}
-                  className="hover:text-[#E5C378] transition-colors"
+                  onClick={() => {
+                    onSelectCategory?.('All');
+                    scrollTo('categories');
+                  }}
+                  className="hover:text-[#9E7518] transition-colors"
                 >
-                  925 Sterling Silver
+                  Shop
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => onSelectCategory('Electroplated')}
-                  className="hover:text-[#E5C378] transition-colors"
+                  onClick={() => {
+                    onSelectCategory?.('All');
+                    scrollTo('product-explorer');
+                  }}
+                  className="hover:text-[#9E7518] transition-colors"
                 >
-                  Electroplated Micron Luxury
+                  Collections
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => onSelectCategory('Utensils')}
-                  className="hover:text-[#E5C378] transition-colors"
+                  onClick={() => scrollTo('heritage')}
+                  className="hover:text-[#9E7518] transition-colors"
                 >
-                  Pure Silver Puja Utensils
+                  About Us
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => onSelectCategory('Idols')}
-                  className="hover:text-[#E5C378] transition-colors"
+                  onClick={() => scrollTo('testimonials')}
+                  className="hover:text-[#9E7518] transition-colors"
                 >
-                  Sacred Idols &amp; Murti
+                  Blog
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollTo('contact-section')}
+                  className="hover:text-[#9E7518] transition-colors"
+                >
+                  Contact
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: Sub-products (Ring, Anklet, Idols, Earrings, etc.) */}
-          <div className="space-y-3">
-            <h4 className="font-serif text-sm font-bold text-[#E5C378] uppercase tracking-wider">
-              Sub-Products
+          {/* Column 3: Customer Concierge & Flagship (4 cols) */}
+          <div className="lg:col-span-4 space-y-3">
+            <h4 className="font-serif text-sm font-bold text-[#1C1917] uppercase tracking-wider">
+              Client Concierge
             </h4>
-            <ul className="space-y-2 text-xs text-stone-400">
-              <li>
-                <button
-                  onClick={() => onSelectCategory('All', 'Ring')}
-                  className="hover:text-[#E5C378] transition-colors"
-                >
-                  Solitaires &amp; Gold Rings
-                </button>
+            <ul className="space-y-2.5 text-xs text-stone-600">
+              <li className="flex items-center gap-2.5 text-stone-900 font-medium">
+                <Phone className="w-3.5 h-3.5 text-[#C59B27] shrink-0" />
+                <span>+91 98765 XXXXX</span>
               </li>
-              <li>
-                <button
-                  onClick={() => onSelectCategory('All', 'Anklet')}
-                  className="hover:text-[#E5C378] transition-colors"
-                >
-                  Silver Payal &amp; Anklets
-                </button>
+              <li className="flex items-center gap-2.5">
+                <Mail className="w-3.5 h-3.5 text-[#C59B27] shrink-0" />
+                <span>abc@luxorajewelry.com</span>
               </li>
-              <li>
-                <button
-                  onClick={() => onSelectCategory('All', 'Idols')}
-                  className="hover:text-[#E5C378] transition-colors"
-                >
-                  Ganesha &amp; Lakshmi Idols
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onSelectCategory('All', 'Earrings')}
-                  className="hover:text-[#E5C378] transition-colors"
-                >
-                  Royal Jhumkas &amp; Hoops
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onSelectCategory('All', 'Necklaces')}
-                  className="hover:text-[#E5C378] transition-colors"
-                >
-                  Chokers &amp; Polki Necklaces
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onSelectCategory('All', 'Utensils')}
-                  className="hover:text-[#E5C378] transition-colors"
-                >
-                  Silver Puja Thalis &amp; Kalash
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Customer Care & Concierge */}
-          <div className="space-y-3">
-            <h4 className="font-serif text-sm font-bold text-[#E5C378] uppercase tracking-wider">
-              Customer Concierge
-            </h4>
-            <ul className="space-y-2 text-xs text-stone-400">
-              <li className="flex items-center gap-2 text-white">
-                <Phone className="w-3.5 h-3.5 text-[#C59B27]" />
-                <span>+91 98765 43210</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#C59B27]" />
-                <span>concierge@aureliajewels.com</span>
-              </li>
-              <li className="flex items-start gap-2 pt-1">
+              <li className="flex items-start gap-2.5 pt-0.5">
                 <MapPin className="w-3.5 h-3.5 text-[#C59B27] shrink-0 mt-0.5" />
-                <span>Zaveri Bazaar &amp; Connaught Place Flagship Boutiques</span>
+                <span>
+                  Flagship Boutiques: Zaveri Bazaar, Mumbai &bull; Connaught Place, New Delhi
+                </span>
               </li>
-              <li className="pt-2 text-[11px] text-stone-400">
-                Mon - Sat: 10:30 AM to 8:00 PM IST
+              <li className="pt-1 text-[11px] text-stone-500">
+                Mon &ndash; Sat: 10:30 AM to 8:00 PM IST
               </li>
             </ul>
           </div>
-
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-500">
-          <div>
-            © 2026 AURELIA FINE JEWELS &amp; SACRED SILVERWARE. All Rights Reserved.
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="text-[11px] text-stone-400">Accepted Safe Payments:</span>
-            <div className="flex items-center gap-2 text-[11px] font-mono text-stone-300">
-              <span className="bg-stone-800 px-2 py-0.5 rounded border border-stone-700">UPI</span>
-              <span className="bg-stone-800 px-2 py-0.5 rounded border border-stone-700">VISA</span>
-              <span className="bg-stone-800 px-2 py-0.5 rounded border border-stone-700">MASTERCARD</span>
-              <span className="bg-stone-800 px-2 py-0.5 rounded border border-stone-700">NET BANKING</span>
+        {/* Bottom Bar: Copyright & Subtle Payment Safe Badges */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500 text-center sm:text-left">
+          <div>&copy; 2026 LUXORA JEWELRY. All Rights Reserved.</div>
+          <div className="flex items-center gap-3">
+            <span className="text-[11px] text-stone-400">Secure Payments:</span>
+            <div className="flex items-center gap-1.5 text-[10px] font-semibold text-stone-600">
+              <span className="bg-white px-2 py-0.5 rounded border border-stone-200 shadow-2xs">
+                UPI
+              </span>
+              <span className="bg-white px-2 py-0.5 rounded border border-stone-200 shadow-2xs">
+                VISA
+              </span>
+              <span className="bg-white px-2 py-0.5 rounded border border-stone-200 shadow-2xs">
+                MASTERCARD
+              </span>
+              <span className="bg-white px-2 py-0.5 rounded border border-stone-200 shadow-2xs">
+                NET BANKING
+              </span>
             </div>
           </div>
         </div>
-
       </div>
     </footer>
   );

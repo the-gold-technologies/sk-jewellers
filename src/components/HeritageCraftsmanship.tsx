@@ -8,9 +8,7 @@ export const HeritageCraftsmanship: React.FC = () => {
   return (
     <section id="heritage" className="py-20 bg-[#FAF7F2] border-t border-[#C59B27]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
           {/* Left Column: Workshop Artisan & Wax Seal Arch */}
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md">
@@ -50,7 +48,10 @@ export const HeritageCraftsmanship: React.FC = () => {
             </h2>
 
             <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-light">
-              For over four decades, our master karigars (artisans) have merged ancient Shilpa Shastra precision with modern jewelry design. Every piece — whether an everyday 925 silver payal, an imperial 22K gold bridal necklace, or an auspicious consecrated silver puja thali — is an enduring emblem of pride.
+              For over four decades, our master karigars (artisans) have merged ancient Shilpa
+              Shastra precision with modern jewelry design. Every piece — whether an everyday 925
+              silver payal, an imperial 22K gold bridal necklace, or an auspicious consecrated
+              silver puja thali — is an enduring emblem of pride.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
@@ -60,7 +61,9 @@ export const HeritageCraftsmanship: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-[#0B2319]">100% BIS Hallmarked</h4>
-                  <p className="text-xs text-stone-500 mt-0.5">Laser-engraved BIS HUID mark verifying 22K/18K purity.</p>
+                  <p className="text-xs text-stone-500 mt-0.5">
+                    Laser-engraved BIS HUID mark verifying 22K/18K purity.
+                  </p>
                 </div>
               </div>
 
@@ -69,8 +72,12 @@ export const HeritageCraftsmanship: React.FC = () => {
                   <Scale className="w-5 h-5 text-[#8C6411]" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-[#0B2319]">Certified 925 &amp; 999 Silver</h4>
-                  <p className="text-xs text-stone-500 mt-0.5">Guaranteed fineness certificate accompanying all silverware.</p>
+                  <h4 className="text-sm font-bold text-[#0B2319]">
+                    Certified 925 &amp; 999 Silver
+                  </h4>
+                  <p className="text-xs text-stone-500 mt-0.5">
+                    Guaranteed fineness certificate accompanying all silverware.
+                  </p>
                 </div>
               </div>
 
@@ -80,7 +87,9 @@ export const HeritageCraftsmanship: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-[#0B2319]">Lifetime Buyback</h4>
-                  <p className="text-xs text-stone-500 mt-0.5">Transparent valuation and exchange at prevailing bullion market rates.</p>
+                  <p className="text-xs text-stone-500 mt-0.5">
+                    Transparent valuation and exchange at prevailing bullion market rates.
+                  </p>
                 </div>
               </div>
 
@@ -90,15 +99,14 @@ export const HeritageCraftsmanship: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-[#0B2319]">Ethically Sourced</h4>
-                  <p className="text-xs text-stone-500 mt-0.5">Conflict-free diamonds, certified gemstones, and green refining.</p>
+                  <p className="text-xs text-stone-500 mt-0.5">
+                    Conflict-free diamonds, certified gemstones, and green refining.
+                  </p>
                 </div>
               </div>
             </div>
-
           </div>
-
         </div>
-
       </div>
     </section>
   );

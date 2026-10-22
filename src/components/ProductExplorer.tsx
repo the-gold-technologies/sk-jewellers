@@ -2,18 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
-import {
-  Heart,
-  Eye,
-  ShoppingBag,
-  Search,
-  Check,
-  RotateCcw,
-  Sparkles,
-  ArrowRight,
-  SlidersHorizontal,
-  X,
-} from 'lucide-react';
+import { Heart, Eye, ShoppingBag, Search, Check, RotateCcw, X } from 'lucide-react';
 import { Product, PRODUCTS_DATA, SUB_PRODUCTS_LIST } from '@/data/jewelleryData';
 
 interface ProductExplorerProps {
@@ -49,17 +38,17 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
   currency,
 }) => {
   const [searchFilter, setSearchFilter] = useState('');
-  const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'rating'>('featured');
+  const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'rating'>(
+    'featured'
+  );
   const [addedAnimationId, setAddedAnimationId] = useState<string | null>(null);
 
   // Filtered and Sorted list
   const filteredProducts = useMemo(() => {
     return PRODUCTS_DATA.filter((item) => {
-      const matchCategory =
-        selectedCategory === 'All' || item.category === selectedCategory;
+      const matchCategory = selectedCategory === 'All' || item.category === selectedCategory;
 
-      const matchSub =
-        selectedSubProduct === 'All' || item.subProduct === selectedSubProduct;
+      const matchSub = selectedSubProduct === 'All' || item.subProduct === selectedSubProduct;
 
       const matchSearch =
         searchFilter.trim() === '' ||
@@ -104,9 +93,11 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
   };
 
   return (
-    <section id="product-explorer" className="py-16 sm:py-24 bg-[#FAF7F2] scroll-mt-20 border-b border-[#C59B27]/15">
+    <section
+      id="product-explorer"
+      className="py-16 sm:py-24 bg-[#FAF7F2] scroll-mt-20 border-b border-[#C59B27]/15"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
           <span className="text-[11px] uppercase font-bold tracking-[0.25em] text-[#9E7518] block mb-2">
@@ -116,13 +107,13 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
             Our Most Loved Pieces
           </h2>
           <p className="mt-2 text-stone-500 text-xs sm:text-sm font-light">
-            Handcrafted with devotion in 22K pure gold, sterling silver, and consecrated sacred metal.
+            Handcrafted with devotion in 22K pure gold, sterling silver, and consecrated sacred
+            metal.
           </p>
         </div>
 
         {/* Minimalist Luxury Filter Navigation */}
         <div className="mb-10 sm:mb-12">
-          
           {/* Tier 1: Clean Category Pills / Tabs */}
           <div className="flex items-center justify-center gap-2 sm:gap-2.5 flex-wrap">
             {CATEGORY_TABS.map((tab) => {
@@ -165,11 +156,12 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
 
           {/* Tier 3: Sleek Toolbar (Count, Search, Sort, Reset) */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mt-6 pt-4 border-t border-stone-200/60">
-            
             {/* Left: Creations Count & Clear Tag */}
             <div className="flex items-center gap-2.5 text-xs text-stone-500 font-light">
               <span>
-                Showing <strong className="text-stone-900 font-medium">{filteredProducts.length}</strong> creations
+                Showing{' '}
+                <strong className="text-stone-900 font-medium">{filteredProducts.length}</strong>{' '}
+                creations
               </span>
               {hasActiveFilters && (
                 <button
@@ -205,7 +197,9 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
 
               <select
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
+                onChange={(e) =>
+                  setSortBy(e.target.value as 'featured' | 'price-asc' | 'price-desc' | 'rating')
+                }
                 className="bg-white border border-stone-200/90 text-xs rounded-full px-3.5 py-1.5 text-stone-700 focus:outline-none focus:border-[#9E7518] cursor-pointer"
               >
                 <option value="featured">Featured</option>
@@ -214,16 +208,18 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
                 <option value="rating">Top Rated</option>
               </select>
             </div>
-
           </div>
-
         </div>
 
         {/* Product Grid - Matching Reference Card UI */}
         {filteredProducts.length === 0 ? (
           <div className="text-center py-16 bg-white rounded-3xl border border-dashed border-stone-300 p-8">
-            <p className="font-serif text-lg text-stone-700">No pieces found matching your selection.</p>
-            <p className="text-xs text-stone-400 mt-1">Try switching to &quot;All Items&quot; or resetting your search filter.</p>
+            <p className="font-serif text-lg text-stone-700">
+              No pieces found matching your selection.
+            </p>
+            <p className="text-xs text-stone-400 mt-1">
+              Try switching to &quot;All Items&quot; or resetting your search filter.
+            </p>
             <button
               onClick={handleResetFilters}
               className="mt-4 bg-[#1C1917] text-white text-xs px-5 py-2.5 rounded-full font-medium hover:bg-stone-800 transition-colors cursor-pointer"
@@ -270,9 +266,7 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
                         aria-label="Wishlist toggle"
                       >
                         <Heart
-                          className={`w-4 h-4 ${
-                            isWishlisted ? 'fill-rose-600 text-rose-600' : ''
-                          }`}
+                          className={`w-4 h-4 ${isWishlisted ? 'fill-rose-600 text-rose-600' : ''}`}
                         />
                       </button>
 
@@ -315,7 +309,9 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
                     <div className="w-full pt-3 mt-3 border-t border-stone-100 flex items-center justify-center relative">
                       <span className="group/link text-xs sm:text-[13px] font-medium tracking-wide text-stone-800 group-hover:text-[#9E7518] inline-flex items-center gap-1.5 transition-colors">
                         <span>Explore Now</span>
-                        <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
+                        <span className="group-hover:translate-x-1.5 transition-transform duration-300">
+                          →
+                        </span>
                       </span>
 
                       {/* Discreet 1-Click Quick Add to Cart Button */}
@@ -339,14 +335,12 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
                         )}
                       </button>
                     </div>
-
                   </div>
                 </div>
               );
             })}
           </div>
         )}
-
       </div>
     </section>
   );

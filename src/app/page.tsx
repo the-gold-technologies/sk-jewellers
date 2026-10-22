@@ -1,44 +1,40 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
-import { CategoryShowcase } from "@/components/CategoryShowcase";
-import { ProductExplorer } from "@/components/ProductExplorer";
-import { HeritageCraftsmanship } from "@/components/HeritageCraftsmanship";
-import { Testimonials } from "@/components/Testimonials";
-import { InstagramCommunity } from "@/components/InstagramCommunity";
-import { Newsletter } from "@/components/Newsletter";
-import { Footer } from "@/components/Footer";
-import { QuickViewModal } from "@/components/QuickViewModal";
-import { CartDrawer, CartItem } from "@/components/CartDrawer";
-import { WishlistDrawer } from "@/components/WishlistDrawer";
-import { Product, PRODUCTS_DATA } from "@/data/jewelleryData";
+import React, { useState } from 'react';
+import { Header } from '@/components/Header';
+import { Hero } from '@/components/Hero';
+import { CategoryShowcase } from '@/components/CategoryShowcase';
+import { ProductExplorer } from '@/components/ProductExplorer';
+import { HeritageCraftsmanship } from '@/components/HeritageCraftsmanship';
+import { Testimonials } from '@/components/Testimonials';
+import { InstagramCommunity } from '@/components/InstagramCommunity';
+import { SpecialMoments } from '@/components/SpecialMoments';
+import { Newsletter } from '@/components/Newsletter';
+import { Footer } from '@/components/Footer';
+import { QuickViewModal } from '@/components/QuickViewModal';
+import { CartDrawer, CartItem } from '@/components/CartDrawer';
+import { WishlistDrawer } from '@/components/WishlistDrawer';
+import { Product, PRODUCTS_DATA } from '@/data/jewelleryData';
 
 export default function Home() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const [selectedSubProduct, setSelectedSubProduct] = useState<string>("All");
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [selectedSubProduct, setSelectedSubProduct] = useState<string>('All');
   const [cartItems, setCartItems] = useState<CartItem[]>([
     {
       product: PRODUCTS_DATA[0], // Royal Solitaire Ring
       quantity: 1,
     },
   ]);
-  const [wishlistIds, setWishlistIds] = useState<string[]>([
-    "gold-necklace-1",
-    "utensil-thali-1",
-  ]);
+  const [wishlistIds, setWishlistIds] = useState<string[]>(['gold-necklace-1', 'utensil-thali-1']);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
-  const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(
-    null,
-  );
-  const [currency, setCurrency] = useState<"INR" | "USD">("INR");
+  const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
+  const currency: 'INR' | 'USD' = 'INR';
 
   const scrollToExplorer = () => {
-    const el = document.getElementById("product-explorer");
+    const el = document.getElementById('product-explorer');
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -47,7 +43,7 @@ export default function Home() {
     if (subProduct) {
       setSelectedSubProduct(subProduct);
     } else {
-      setSelectedSubProduct("All");
+      setSelectedSubProduct('All');
     }
     scrollToExplorer();
   };
@@ -61,9 +57,7 @@ export default function Home() {
       const existing = prev.find((item) => item.product.id === product.id);
       if (existing) {
         return prev.map((item) =>
-          item.product.id === product.id
-            ? { ...item, quantity: item.quantity + quantity }
-            : item,
+          item.product.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
         );
       }
       return [...prev, { product, quantity }];
@@ -76,23 +70,17 @@ export default function Home() {
       return;
     }
     setCartItems((prev) =>
-      prev.map((item) =>
-        item.product.id === productId ? { ...item, quantity } : item,
-      ),
+      prev.map((item) => (item.product.id === productId ? { ...item, quantity } : item))
     );
   };
 
   const handleRemoveCartItem = (productId: string) => {
-    setCartItems((prev) =>
-      prev.filter((item) => item.product.id !== productId),
-    );
+    setCartItems((prev) => prev.filter((item) => item.product.id !== productId));
   };
 
   const handleToggleWishlist = (product: Product) => {
     setWishlistIds((prev) =>
-      prev.includes(product.id)
-        ? prev.filter((id) => id !== product.id)
-        : [...prev, product.id],
+      prev.includes(product.id) ? prev.filter((id) => id !== product.id) : [...prev, product.id]
     );
   };
 
@@ -101,14 +89,9 @@ export default function Home() {
     handleToggleWishlist(product);
   };
 
-  const wishlistProducts = PRODUCTS_DATA.filter((p) =>
-    wishlistIds.includes(p.id),
-  );
+  const wishlistProducts = PRODUCTS_DATA.filter((p) => wishlistIds.includes(p.id));
 
-  const cartTotalCount = cartItems.reduce(
-    (acc, item) => acc + item.quantity,
-    0,
-  );
+  const cartTotalCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <main className="min-h-screen w-full bg-[#FAF5EE] text-[#1C1917] selection:bg-[#C59B27]/20 selection:text-[#8C6411]">
@@ -119,8 +102,6 @@ export default function Home() {
         onOpenCart={() => setIsCartOpen(true)}
         onOpenWishlist={() => setIsWishlistOpen(true)}
         onSelectCategory={handleSelectCategory}
-        currency={currency}
-        onToggleCurrency={() => setCurrency(currency === "INR" ? "USD" : "INR")}
       />
 
       {/* 2. Luxury Hero Section (Exact Luxora Reference) */}
@@ -152,9 +133,12 @@ export default function Home() {
       <Testimonials />
 
       {/* 9. Instagram Community Gallery */}
-      <InstagramCommunity />
+      {/* <InstagramCommunity /> */}
 
-      {/* 10. VIP Club Newsletter */}
+      {/* 10. Curated Moments: Bridal Wedding & Eternal Gifting Banners */}
+      <SpecialMoments onSelectCategory={handleSelectCategory} />
+
+      {/* 11. Contact & Concierge Form */}
       <Newsletter />
 
       {/* 11. Footer with full Category & Sub-product navigation */}
@@ -166,9 +150,7 @@ export default function Home() {
         onClose={() => setQuickViewProduct(null)}
         onAddToCart={handleAddToCart}
         onToggleWishlist={handleToggleWishlist}
-        isWishlisted={
-          quickViewProduct ? wishlistIds.includes(quickViewProduct.id) : false
-        }
+        isWishlisted={quickViewProduct ? wishlistIds.includes(quickViewProduct.id) : false}
         currency={currency}
       />
 
@@ -185,9 +167,7 @@ export default function Home() {
         isOpen={isWishlistOpen}
         onClose={() => setIsWishlistOpen(false)}
         wishlistProducts={wishlistProducts}
-        onRemoveWishlist={(id) =>
-          setWishlistIds((prev) => prev.filter((item) => item !== id))
-        }
+        onRemoveWishlist={(id) => setWishlistIds((prev) => prev.filter((item) => item !== id))}
         onMoveToCart={handleMoveFromWishlistToCart}
         currency={currency}
       />
