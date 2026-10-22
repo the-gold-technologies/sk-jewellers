@@ -31,10 +31,12 @@
 ## Key Features
 
 ### 1. Live Precious Metal Rates Bar
+
 - Real-time bullion ticker tracking **24K Gold**, **22K Gold**, **999 Pure Silver**, and **925 Sterling Silver**.
 - Visual price direction indicators (`+0.62%`, `+0.45%`, `-0.18%`) with automated updates and verified BIS hallmarking badges.
 
 ### 2. Editorial Hero & Category Navigation
+
 - Cinematic visual layout featuring handcrafted heirloom jewellery, classic serif typography, and gold foil divider flourishes.
 - Quick navigation discs routing directly into major collections:
   - **22K Gold Jewellery** (Bridal Necklaces, Jhumkas, Royal Kadas, Payals)
@@ -44,32 +46,38 @@
   - **Consecrated Idols** (Lord Ganesha, Radha Krishna Murti, Bal Gopal)
 
 ### 3. Interactive Product Explorer
+
 - **Instant Search:** Dynamic filtering by product title, collection name, or sub-category.
 - **Categorization:** Tabbed browsing across all precious metal departments with sub-product chips.
-- **Advanced Sorting:** Filter products by *Featured*, *Price: Low to High*, *Price: High to Low*, or *Customer Rating*.
+- **Advanced Sorting:** Filter products by _Featured_, _Price: Low to High_, _Price: High to Low_, or _Customer Rating_.
 - **Currency Switcher:** Seamless price conversion between **INR (₹)** and **USD ($)**.
 
 ### 4. Interactive Drawers & Modals
+
 - **Quick View Modal:** In-depth product view with high-definition image galleries, purity ratings, gross weight specifications, and one-click add to bag.
 - **Shopping Bag Drawer:** Slide-out interactive cart with real-time quantity modifiers, item removal, and order subtotal calculations.
 - **Wishlist Drawer:** Dedicated patron wishlist management with instant transfer to shopping bag.
 
 ### 5. Continuous Infinite Marquee Slider
+
 - **GPU-Accelerated RTL Glide:** 100% continuous right-to-left marquee animation built with CSS transforms, eliminating browser rewind stutter.
 - **Ultra-Wide Support:** Continuous multi-track architecture supporting monitors up to 5K resolution without blank gaps.
 - **Interactive Pause:** Automatically pauses glide on patron hover for inspection.
 
 ### 6. Full-Width Editorial Promotional Banners
+
 - **Crafted for Life's Special Moments:** Dedicated wedding & bridal showcase with travertine stone aesthetics.
 - **A Gift That Lasts Forever:** Timeless presentation gift curation with instant navigation to curated collections.
 
 ### 7. Patron Trust & Authenticity Badges
+
 - **Ethically Sourced:** 100% conflict-free precious diamonds and gemstones.
 - **Certified Quality:** Government-registered BIS 916 & 925 hallmarking on every creation.
 - **Sustainable Practices:** Recycled precious metals and ethical artisan ateliers.
 - **Trusted by 50K+ Patrons:** Backed by generations of patrons and glowing customer reviews.
 
 ### 8. Client Concierge & Bespoke Consultation
+
 - Dedicated client inquiry channel for custom bridal sets, corporate gifting, and private boutique consultations.
 - Interactive contact form with direct WhatsApp, phone, and boutique flagship locations.
 
@@ -77,15 +85,15 @@
 
 ## Tech Stack
 
-| Category | Technology |
-| :--- | :--- |
-| **Framework** | [Next.js](https://nextjs.org/) 16 (App Router) |
-| **Library** | [React](https://react.dev/) 19 |
-| **Language** | [TypeScript](https://www.typescriptlang.org/) 5 |
-| **Styling** | [Tailwind CSS](https://tailwindcss.com/) 4 |
-| **Icons** | [Lucide React](https://lucide.dev/) |
-| **Code Formatting** | [Prettier](https://prettier.io/) |
-| **Code Quality** | [ESLint](https://eslint.org/) (Next.js Core Web Vitals) |
+| Category            | Technology                                              |
+| :------------------ | :------------------------------------------------------ |
+| **Framework**       | [Next.js](https://nextjs.org/) 16 (App Router)          |
+| **Library**         | [React](https://react.dev/) 19                          |
+| **Language**        | [TypeScript](https://www.typescriptlang.org/) 5         |
+| **Styling**         | [Tailwind CSS](https://tailwindcss.com/) 4              |
+| **Icons**           | [Lucide React](https://lucide.dev/)                     |
+| **Code Formatting** | [Prettier](https://prettier.io/)                        |
+| **Code Quality**    | [ESLint](https://eslint.org/) (Next.js Core Web Vitals) |
 
 ---
 
@@ -132,6 +140,7 @@ jewellery-page/
 ### Prerequisites
 
 Ensure you have the following installed on your machine:
+
 - **Node.js**: `v18.18.0` or higher (Node.js 20+ recommended)
 - **Package Manager**: `npm` (v9+), `yarn`, or `pnpm`
 
@@ -178,14 +187,14 @@ npm start
 
 In the project directory, you can run:
 
-| Command | Description |
-| :--- | :--- |
-| `npm run dev` | Starts the Next.js development server on `http://localhost:3000` |
-| `npm run build` | Compiles the production application bundle |
-| `npm run start` | Launches the built production server |
-| `npm run lint` | Runs ESLint to verify code quality and rule compliance |
-| `npm run format` | Automatically formats all source code using Prettier |
-| `npm run format:check` | Validates that all files comply with Prettier styling |
+| Command                | Description                                                      |
+| :--------------------- | :--------------------------------------------------------------- |
+| `npm run dev`          | Starts the Next.js development server on `http://localhost:3000` |
+| `npm run build`        | Compiles the production application bundle                       |
+| `npm run start`        | Launches the built production server                             |
+| `npm run lint`         | Runs ESLint to verify code quality and rule compliance           |
+| `npm run format`       | Automatically formats all source code using Prettier             |
+| `npm run format:check` | Validates that all files comply with Prettier styling            |
 
 ---
 
