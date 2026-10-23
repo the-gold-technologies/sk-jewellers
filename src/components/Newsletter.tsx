@@ -65,7 +65,7 @@ export const Newsletter: React.FC = () => {
                   <p className="text-[10px] uppercase tracking-wider text-stone-400 font-semibold">
                     Concierge Email
                   </p>
-                  <p className="font-medium text-stone-900 text-sm">abc@luxorajewelry.com</p>
+                  <p className="font-medium text-stone-900 text-sm">concierge@skjewellers.com</p>
                 </div>
               </div>
 

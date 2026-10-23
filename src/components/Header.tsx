@@ -76,16 +76,16 @@ export const Header: React.FC<HeaderProps> = ({
               </svg>
             </div>
             <div className="flex flex-col">
-              <span className="font-serif text-2xl font-bold tracking-[0.18em] text-[#1C1814] leading-none">
-                LUXORA
+              <span className="font-serif text-2xl font-bold tracking-[0.2em] text-[#1C1814] leading-none">
+                SK
               </span>
-              <span className="text-[8px] uppercase tracking-[0.38em] text-[#9E7518] font-semibold mt-1">
-                JEWELRY
+              <span className="text-[8.5px] uppercase tracking-[0.26em] text-[#9E7518] font-semibold mt-1">
+                JEWELLERS
               </span>
             </div>
           </a>
 
-          {/* Center: Clean Nav Links (Home, Shop, Collections, About Us, Blog, Contact) */}
+          {/* Center: Clean Nav Links (Home, Shop, Collections, About Us, Contact) */}
           <nav className="hidden lg:flex items-center gap-9 text-sm font-medium text-[#4A453F]">
             {/* Home Link with subtle active indicator bar underneath */}
             <a
@@ -158,14 +158,6 @@ export const Header: React.FC<HeaderProps> = ({
 
             <a href="#heritage" className="hover:text-[#C59B27] transition-colors">
               About Us
-            </a>
-
-            <a
-              href="#product-explorer"
-              onClick={() => handleCategorySelect('Utensils')}
-              className="hover:text-[#C59B27] transition-colors"
-            >
-              Blog
             </a>
 
             <a href="#contact-footer" className="hover:text-[#C59B27] transition-colors">

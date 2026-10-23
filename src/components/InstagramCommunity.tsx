@@ -14,61 +14,61 @@ const INSTAGRAM_POSTS = [
   {
     id: 1,
     img: '/images/rings-stack.jpg',
-    handle: '@luxorajewelry',
-    title: '#LuxoraBrides 22K Gold Diamond Rings',
+    handle: '@skjewellers',
+    title: '#SKJewellers 22K Gold Diamond Rings',
   },
   {
     id: 2,
     img: '/images/gold-choker.jpg',
-    handle: '@luxorajewelry',
+    handle: '@skjewellers',
     title: 'Heritage Temple Polki Choker in Pure Gold',
   },
   {
     id: 3,
     img: '/images/gold-jhumkas.jpg',
-    handle: '@luxorajewelry',
+    handle: '@skjewellers',
     title: 'Padmavati Royal Gold Dome Jhumkas',
   },
   {
     id: 4,
     img: '/images/silver-puja-thali.jpg',
-    handle: '@luxorajewelry',
+    handle: '@skjewellers',
     title: 'Pure Silver Puja Thali Setup for Festive Blessings',
   },
   {
     id: 5,
     img: '/images/silver-payal.jpg',
-    handle: '@luxorajewelry',
+    handle: '@skjewellers',
     title: 'Handcrafted Chandrika 925 Silver Ghungroo Payal',
   },
   {
     id: 6,
     img: '/images/electro-emerald-ring.jpg',
-    handle: '@luxorajewelry',
+    handle: '@skjewellers',
     title: 'Imperial Emerald 18K Micron Plated Cocktail Ring',
   },
   {
     id: 7,
     img: '/images/heart-pendant.jpg',
-    handle: '@luxorajewelry',
+    handle: '@skjewellers',
     title: 'Heart Luminary Diamond Pavé Pendant',
   },
   {
     id: 8,
     img: '/images/silver-tumbler.jpg',
-    handle: '@luxorajewelry',
+    handle: '@skjewellers',
     title: 'Ayurvedic 999 Pure Silver Health Tumbler',
   },
   {
     id: 9,
     img: '/images/electro-anklet.jpg',
-    handle: '@luxorajewelry',
+    handle: '@skjewellers',
     title: 'Dainty Starburst Electroplated Summer Anklet',
   },
   {
     id: 10,
     img: '/images/silver-kalash.jpg',
-    handle: '@luxorajewelry',
+    handle: '@skjewellers',
     title: 'Sacred Silver Mangal Kalash & Nariyal',
   },
 ];
@@ -111,7 +111,7 @@ export const InstagramCommunity: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div>
             <span className="text-xs uppercase font-bold tracking-widest text-[#8C6411]">
-              Follow Us @aureliajewels
+              Follow Us @skjewellers
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl font-medium text-[#0B2319] mt-1">
               Join Our Shining Community

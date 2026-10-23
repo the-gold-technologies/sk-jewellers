@@ -42,11 +42,11 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-2xl font-bold tracking-[0.18em] text-[#1C1814] leading-none">
-                  LUXORA
+                <span className="font-serif text-2xl font-bold tracking-[0.2em] text-[#1C1814] leading-none">
+                  SK
                 </span>
-                <span className="text-[8px] uppercase tracking-[0.38em] text-[#9E7518] font-semibold mt-1">
-                  JEWELRY
+                <span className="text-[8.5px] uppercase tracking-[0.26em] text-[#9E7518] font-semibold mt-1">
+                  JEWELLERS
                 </span>
               </div>
             </div>
@@ -141,14 +141,6 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
               </li>
               <li>
                 <button
-                  onClick={() => scrollTo('testimonials')}
-                  className="hover:text-[#9E7518] transition-colors"
-                >
-                  Blog
-                </button>
-              </li>
-              <li>
-                <button
                   onClick={() => scrollTo('contact-section')}
                   className="hover:text-[#9E7518] transition-colors"
                 >
@@ -170,7 +162,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-3.5 h-3.5 text-[#C59B27] shrink-0" />
-                <span>abc@luxorajewelry.com</span>
+                <span>concierge@skjewellers.com</span>
               </li>
               <li className="flex items-start gap-2.5 pt-0.5">
                 <MapPin className="w-3.5 h-3.5 text-[#C59B27] shrink-0 mt-0.5" />
@@ -187,7 +179,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
 
         {/* Bottom Bar: Copyright & Subtle Payment Safe Badges */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500 text-center sm:text-left">
-          <div>&copy; 2026 LUXORA JEWELRY. All Rights Reserved.</div>
+          <div>&copy; 2026 SK JEWELLERS. All Rights Reserved.</div>
           <div className="flex items-center gap-3">
             <span className="text-[11px] text-stone-400">Secure Payments:</span>
             <div className="flex items-center gap-1.5 text-[10px] font-semibold text-stone-600">

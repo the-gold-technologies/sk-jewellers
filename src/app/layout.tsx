@@ -15,7 +15,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'AURELIA & MIRAYA | Fine Luxury Jewellery & Sacred Silverware',
+  title: 'SK JEWELLERS | Fine Luxury Jewellery & Sacred Silverware',
   description:
     'Exquisite Gold, Silver, Electroplated luxury jewellery, spiritual idols, and authentic puja utensils. Certified BIS Hallmarked 100% genuine craftsmanship.',
   keywords: [

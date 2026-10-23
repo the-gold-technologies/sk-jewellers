@@ -1,4 +1,4 @@
-# LUXORA JEWELRY — Fine Luxury Jewellery & Sacred Silverware
+# SK JEWELLERS — Fine Luxury Jewellery & Sacred Silverware
 
 > A high-performance, responsive luxury e-commerce web application crafted with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS**. Designed for discerning patrons seeking certified 22K hallmarked gold, 925 sterling silver heirlooms, and sacred silverware.
 
@@ -24,7 +24,7 @@
 
 ## Overview
 
-**LUXORA JEWELRY** delivers an editorial luxury shopping experience that blends heritage craftsmanship with modern e-commerce capabilities. Built from the ground up for speed, visual elegance, and seamless responsiveness across all screen sizes—from mobile viewports to ultra-wide 4K/5K displays.
+**SK JEWELLERS** delivers an editorial luxury shopping experience that blends heritage craftsmanship with modern e-commerce capabilities. Built from the ground up for speed, visual elegance, and seamless responsiveness across all screen sizes—from mobile viewports to ultra-wide 4K/5K displays.
 
 ---
 
@@ -220,8 +220,8 @@ In the project directory, you can run:
 - **Environment Configuration:** If connecting external payment gateways (e.g., Razorpay, Stripe) or CMS backends, copy `.env.example` to `.env.local` and define keys using standard Next.js conventions:
   ```bash
   # Client-exposed variables (if needed)
-  NEXT_PUBLIC_STORE_NAME="Luxora Jewelry"
-  NEXT_PUBLIC_SUPPORT_EMAIL="concierge@luxorajewelry.com"
+  NEXT_PUBLIC_STORE_NAME="SK Jewellers"
+  NEXT_PUBLIC_SUPPORT_EMAIL="concierge@skjewellers.com"
 
   # Server-only secrets (never commit to version control)
   # PAYMENT_GATEWAY_SECRET=""
@@ -233,4 +233,4 @@ In the project directory, you can run:
 
 ## License
 
-This project is privately developed for **LUXORA JEWELRY**. All rights reserved.
+This project is privately developed for **SK JEWELLERS**. All rights reserved.

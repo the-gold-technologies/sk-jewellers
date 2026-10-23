@@ -21,7 +21,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onCategoryClick }) =
       <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[62%] h-full pointer-events-none select-none z-0">
         <Image
           src="/images/luxora-hero.jpg"
-          alt="Luxora Model Wearing Diamond Chandelier Earrings and Teardrop Pendant"
+          alt="SK Jewellers Model Wearing Diamond Chandelier Earrings and Teardrop Pendant"
           fill
           priority
           className="object-cover object-[70%_25%] lg:object-[center_20%]"
