@@ -1,6 +1,7 @@
 export interface Product {
   id: string;
   name: string;
+  shortName?: string;
   category: 'Gold' | 'Silver' | 'Electroplated' | 'Utensils' | 'Idols';
   subProduct: 'Ring' | 'Anklet' | 'Idols' | 'Earrings' | 'Necklaces' | 'Utensils' | 'Bangles';
   price: number;
@@ -35,7 +36,7 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     tagline: 'Timeless 22K & 18K Hallmarked Elegance',
     description:
       'Impeccably crafted yellow, rose, and antique gold treasures certified with authentic BIS hallmark for everlasting radiance.',
-    image: '/images/category-gold.jpg',
+    image: '/images/gold-payal.jpg',
     subProducts: ['Ring', 'Earrings', 'Necklaces', 'Bangles', 'Anklet', 'Idols'],
     bannerHighlight: 'BIS 916 Hallmarked Pure Gold',
     purityBadge: '22K / 916 BIS Hallmark',
@@ -46,7 +47,7 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     tagline: '925 Pure Sterling Silver Splendor',
     description:
       'Contemporary and traditional sterling silver masterpieces with tarnish-resistant rhodium finish, crafted for modern royalty.',
-    image: '/images/category-silver.jpg',
+    image: '/images/silver-drops.jpg',
     subProducts: ['Ring', 'Anklet', 'Earrings', 'Necklaces', 'Bangles', 'Idols'],
     bannerHighlight: '92.5% Pure Sterling Silver',
     purityBadge: '925 Sterling Silver',
@@ -57,7 +58,7 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     tagline: 'Micron Gold & Rhodium Finish Artifacts',
     description:
       'Premium anti-tarnish electroplated creations on royal brass with triple-layer 18K micron gold and platinum luster.',
-    image: '/images/category-electroplated.jpg',
+    image: '/images/electro-emerald-ring.jpg',
     subProducts: ['Ring', 'Earrings', 'Necklaces', 'Bangles', 'Anklet'],
     bannerHighlight: 'Triple Micron 18K Gold Plated',
     purityBadge: 'Micron Plated / Anti-Tarnish',
@@ -68,7 +69,7 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     tagline: 'Sacred Silver & Royal Dinnerware',
     description:
       'Consecrated pure silver puja thalis, kalash, bowls, glasses, and ceremonial sets crafted to bring auspicious blessings to every home.',
-    image: '/images/category-utensils.jpg',
+    image: '/images/silver-kalash.jpg',
     subProducts: ['Utensils', 'Idols'],
     bannerHighlight: 'Pure 999 & 925 Silver Utensils',
     purityBadge: '99.9% / 92.5% Purity Certified',
@@ -79,7 +80,7 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     tagline: 'Auspicious Silver & Gold Consecrated Idols',
     description:
       'Sculpted by generational temple artisans — Lord Ganesha, Goddess Lakshmi, and Bal Gopal in pure sterling silver and gold finish.',
-    image: '/images/category-idols.jpg',
+    image: '/images/silver-ganesha.jpg',
     subProducts: ['Idols', 'Utensils'],
     bannerHighlight: 'Temple Artisan Sculpted Idols',
     purityBadge: 'Consecrated Sacred Purity',
@@ -102,6 +103,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'gold-pendant-1',
     name: 'Eternal Heart Diamond Gold Pendant',
+    shortName: 'Eternal Heart Pendant',
     category: 'Gold',
     subProduct: 'Necklaces',
     price: 36500,
@@ -121,6 +123,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'gold-ring-1',
     name: 'Aura Stackable 22K Gold Diamond Rings',
+    shortName: 'Aura Stackable Rings',
     category: 'Gold',
     subProduct: 'Ring',
     price: 48500,
@@ -140,6 +143,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'gold-anklet-1',
     name: 'Ghungroo Royal 22K Gold Anklet (Payal)',
+    shortName: 'Ghungroo Royal Anklet',
     category: 'Gold',
     subProduct: 'Anklet',
     price: 64200,
@@ -159,6 +163,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'gold-idols-1',
     name: '24K Gold Lakshmi-Ganesh Divine Chowki',
+    shortName: 'Lakshmi-Ganesh Chowki',
     category: 'Gold',
     subProduct: 'Idols',
     price: 112000,
@@ -178,6 +183,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'gold-earring-1',
     name: 'Padmavati Royal Gold Jhumkas',
+    shortName: 'Padmavati Royal Jhumkas',
     category: 'Gold',
     subProduct: 'Earrings',
     price: 86500,
@@ -197,6 +203,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'gold-necklace-1',
     name: 'Aurelia Temple Polki Gold Choker',
+    shortName: 'Temple Polki Choker',
     category: 'Gold',
     subProduct: 'Necklaces',
     price: 245000,
@@ -216,6 +223,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'gold-bangle-1',
     name: 'Nizam Antique 22K Gold Kada',
+    shortName: 'Nizam Antique Kada',
     category: 'Gold',
     subProduct: 'Bangles',
     price: 135000,
@@ -236,6 +244,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'silver-ring-1',
     name: 'Eternal Sparkle 925 Silver Solitaire Ring',
+    shortName: 'Eternal Sparkle Ring',
     category: 'Silver',
     subProduct: 'Ring',
     price: 3499,
@@ -255,6 +264,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'silver-anklet-1',
     name: 'Chandrika Oxidized 925 Silver Payal',
+    shortName: 'Chandrika Oxidized Payal',
     category: 'Silver',
     subProduct: 'Anklet',
     price: 6899,
@@ -274,6 +284,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'silver-idols-1',
     name: '999 Pure Silver Bal Gopal Idol (Laddu Gopal)',
+    shortName: 'Bal Gopal Idol',
     category: 'Silver',
     subProduct: 'Idols',
     price: 18500,
@@ -293,6 +304,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'silver-earring-1',
     name: 'Chandrika Filigree 925 Silver Jhumka Drops',
+    shortName: 'Chandrika Filigree Jhumkas',
     category: 'Silver',
     subProduct: 'Earrings',
     price: 4299,
@@ -311,6 +323,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'silver-necklace-1',
     name: 'Aria Dainty Diamond Cut 925 Silver Layer',
+    shortName: 'Aria Diamond Chain',
     category: 'Silver',
     subProduct: 'Necklaces',
     price: 5499,
@@ -331,6 +344,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'electro-ring-1',
     name: 'Imperial Emerald 18K Electroplated Cocktail Ring',
+    shortName: 'Imperial Emerald Ring',
     category: 'Electroplated',
     subProduct: 'Ring',
     price: 1899,
@@ -349,6 +363,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'electro-earring-1',
     name: 'Celestial Diamond Hoop 18K Plated Earrings',
+    shortName: 'Celestial Hoop Earrings',
     category: 'Electroplated',
     subProduct: 'Earrings',
     price: 2199,
@@ -368,6 +383,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'electro-necklace-1',
     name: 'Heart Luminary Electroplated Pendant Set',
+    shortName: 'Heart Luminary Pendant',
     category: 'Electroplated',
     subProduct: 'Necklaces',
     price: 2499,
@@ -386,6 +402,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'electro-anklet-1',
     name: 'Dainty Starburst Electroplated Anklet',
+    shortName: 'Dainty Starburst Anklet',
     category: 'Electroplated',
     subProduct: 'Anklet',
     price: 1599,
@@ -406,6 +423,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'utensil-thali-1',
     name: 'Royal Heritage 925 Pure Silver Puja Thali Set (7 Pcs)',
+    shortName: 'Heritage Puja Thali',
     category: 'Utensils',
     subProduct: 'Utensils',
     price: 78500,
@@ -425,6 +443,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'utensil-glass-1',
     name: 'Ayurvedic Pure Silver Health Glass / Tumbler',
+    shortName: 'Ayurvedic Silver Tumbler',
     category: 'Utensils',
     subProduct: 'Utensils',
     price: 14200,
@@ -444,6 +463,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'utensil-kalash-1',
     name: 'Carved Silver Mangal Kalash & Nariyal',
+    shortName: 'Carved Mangal Kalash',
     category: 'Utensils',
     subProduct: 'Utensils',
     price: 36000,
@@ -462,6 +482,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'utensil-bowl-1',
     name: 'Silver Baby Annaprashan Bowl & Spoon Set',
+    shortName: 'Annaprashan Bowl Set',
     category: 'Utensils',
     subProduct: 'Utensils',
     price: 9800,
@@ -482,6 +503,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'idol-ganesh-1',
     name: 'Vighnaharta Pure Silver Ganesha on Lotus Throne',
+    shortName: 'Vighnaharta Ganesha Idol',
     category: 'Idols',
     subProduct: 'Idols',
     price: 24500,
@@ -501,6 +523,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'idol-radha-krishna-1',
     name: 'Divine Radha Krishna Eternal Love Silver Idol',
+    shortName: 'Radha Krishna Murti',
     category: 'Idols',
     subProduct: 'Idols',
     price: 49000,
@@ -519,6 +542,7 @@ export const PRODUCTS_DATA: Product[] = [
   {
     id: 'idol-lakshmi-1',
     name: 'Dhanlaxmi Wealth Goddess Pure Silver Murti',
+    shortName: 'Dhanlaxmi Wealth Murti',
     category: 'Idols',
     subProduct: 'Idols',
     price: 31500,

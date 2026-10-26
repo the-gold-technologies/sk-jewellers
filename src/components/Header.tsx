@@ -96,6 +96,9 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C59B27] rounded-full" />
             </a>
 
+            <a href="#heritage" className="hover:text-[#C59B27] transition-colors">
+              About Us
+            </a>
             {/* Shop with Category Dropdown (Gold, Silver, Electroplated, Utensils) */}
             <div
               className="relative group"
@@ -154,10 +157,6 @@ export const Header: React.FC<HeaderProps> = ({
 
             <a href="#categories" className="hover:text-[#C59B27] transition-colors">
               Collections
-            </a>
-
-            <a href="#heritage" className="hover:text-[#C59B27] transition-colors">
-              About Us
             </a>
 
             <a href="#contact-footer" className="hover:text-[#C59B27] transition-colors">

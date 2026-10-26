@@ -7,9 +7,9 @@ import { CategoryShowcase } from '@/components/CategoryShowcase';
 import { ProductExplorer } from '@/components/ProductExplorer';
 import { HeritageCraftsmanship } from '@/components/HeritageCraftsmanship';
 import { Testimonials } from '@/components/Testimonials';
-import { InstagramCommunity } from '@/components/InstagramCommunity';
 import { SpecialMoments } from '@/components/SpecialMoments';
 import { Newsletter } from '@/components/Newsletter';
+import { InstagramCommunity } from '@/components/InstagramCommunity';
 import { Footer } from '@/components/Footer';
 import { QuickViewModal } from '@/components/QuickViewModal';
 import { CartDrawer, CartItem } from '@/components/CartDrawer';
@@ -132,16 +132,13 @@ export default function Home() {
       {/* 8. Verified Patron Reviews */}
       <Testimonials />
 
-      {/* 9. Instagram Community Gallery */}
-      {/* <InstagramCommunity /> */}
-
       {/* 10. Curated Moments: Bridal Wedding & Eternal Gifting Banners */}
       <SpecialMoments onSelectCategory={handleSelectCategory} />
 
-      {/* 11. Contact & Concierge Form */}
-      <Newsletter />
+      {/* 11. Follow Our Instagram Carousel (Ditto Reference Match) */}
+      <InstagramCommunity />
 
-      {/* 11. Footer with full Category & Sub-product navigation */}
+      {/* 12. Footer with full Category & Sub-product navigation */}
       <Footer onSelectCategory={handleSelectCategory} />
 
       {/* Interactive Drawers & Modals */}

@@ -13,7 +13,7 @@ export const HeritageCraftsmanship: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md">
               {/* Arch Shaped Photo */}
-              <div className="relative h-[440px] w-full rounded-t-full rounded-b-3xl overflow-hidden shadow-2xl border-4 border-white bg-stone-100">
+              <div className="relative h-[460px] w-full rounded-t-full rounded-b-3xl overflow-hidden shadow-2xl border-4 border-white bg-stone-100">
                 <Image
                   src="https://images.unsplash.com/photo-1531995811006-35cb42e1a022?auto=format&fit=crop&w=800&q=80"
                   alt="Jewellery Craftsmanship Artisan Workshop"

@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { Heart, Eye, ShoppingBag, Search, Check, RotateCcw, X } from 'lucide-react';
+import { Heart, Eye, ShoppingBag, Search, Check, RotateCcw, X, ChevronDown } from 'lucide-react';
 import { Product, PRODUCTS_DATA, SUB_PRODUCTS_LIST } from '@/data/jewelleryData';
 
 interface ProductExplorerProps {
@@ -26,6 +26,13 @@ const CATEGORY_TABS = [
   { id: 'Idols', label: 'Divine Idols' },
 ];
 
+const SORT_OPTIONS: { id: 'featured' | 'price-asc' | 'price-desc' | 'rating'; label: string }[] = [
+  { id: 'featured', label: 'Featured' },
+  { id: 'price-asc', label: 'Price: Low to High' },
+  { id: 'price-desc', label: 'Price: High to Low' },
+  { id: 'rating', label: 'Top Rated' },
+];
+
 export const ProductExplorer: React.FC<ProductExplorerProps> = ({
   selectedCategory,
   selectedSubProduct,
@@ -41,7 +48,30 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
   const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'rating'>(
     'featured'
   );
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+  const [isSubProductOpen, setIsSubProductOpen] = useState(false);
+  const [isSortOpen, setIsSortOpen] = useState(false);
+
+  const categoryRef = useRef<HTMLDivElement>(null);
+  const subProductRef = useRef<HTMLDivElement>(null);
+  const sortRef = useRef<HTMLDivElement>(null);
   const [addedAnimationId, setAddedAnimationId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (categoryRef.current && !categoryRef.current.contains(e.target as Node)) {
+        setIsCategoryOpen(false);
+      }
+      if (subProductRef.current && !subProductRef.current.contains(e.target as Node)) {
+        setIsSubProductOpen(false);
+      }
+      if (sortRef.current && !sortRef.current.contains(e.target as Node)) {
+        setIsSortOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // Filtered and Sorted list
   const filteredProducts = useMemo(() => {
@@ -112,70 +142,144 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
           </p>
         </div>
 
-        {/* Minimalist Luxury Filter Navigation */}
-        <div className="mb-10 sm:mb-12">
-          {/* Tier 1: Clean Category Pills / Tabs */}
-          <div className="flex items-center justify-center gap-2 sm:gap-2.5 flex-wrap">
-            {CATEGORY_TABS.map((tab) => {
-              const isActive = selectedCategory === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => onSelectCategory(tab.id)}
-                  className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-[13px] tracking-wider uppercase font-medium transition-all duration-300 cursor-pointer ${
-                    isActive
-                      ? 'bg-[#1C1917] text-[#FAF7F2] shadow-sm'
-                      : 'bg-white/90 text-stone-600 hover:text-[#1C1917] hover:bg-white border border-stone-200/80 hover:border-stone-400'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              );
-            })}
+        {/* Minimalist Luxury Filter & Control Bar (No enclosing box) */}
+        <div className="mb-8 sm:mb-10">
+          {/* Top: Showing Creations Count */}
+          <div className="mb-3.5 text-xs text-stone-500 font-light">
+            Showing{' '}
+            <strong className="text-stone-900 font-medium">{filteredProducts.length}</strong>{' '}
+            creations
           </div>
 
-          {/* Tier 2: Compact Sub-Products Chips Strip */}
-          <div className="flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap mt-4 pt-3 border-t border-stone-200/40">
-            {SUB_PRODUCTS_LIST.map((sub) => {
-              const isActive = selectedSubProduct === sub.id;
-              return (
+          {/* Controls Row: Unboxed Dropdowns, Search & Sort */}
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-3 sm:gap-4">
+            {/* Left: Filter Dropdowns (Collection & Jewellery Type) */}
+            <div className="flex items-center gap-2.5 flex-wrap w-full lg:w-auto">
+              {/* Collection Dropdown */}
+              <div ref={categoryRef} className="relative">
                 <button
-                  key={sub.id}
-                  onClick={() => onSelectSubProduct(sub.id)}
-                  className={`px-3 sm:px-3.5 py-1 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? 'bg-[#9E7518]/15 text-[#8C6411] border border-[#C59B27] font-semibold'
-                      : 'text-stone-500 hover:text-stone-900 hover:bg-stone-200/60'
-                  }`}
+                  type="button"
+                  onClick={() => {
+                    setIsCategoryOpen((prev) => !prev);
+                    setIsSubProductOpen(false);
+                    setIsSortOpen(false);
+                  }}
+                  className="bg-white border border-[#C59B27]/30 hover:border-[#9E7518] text-xs rounded-full px-4 py-2 text-stone-700 hover:text-stone-900 focus:outline-none flex items-center gap-2 cursor-pointer transition-all duration-200 shadow-2xs hover:shadow-xs"
                 >
-                  {sub.label}
+                  <span className="text-[11px] uppercase tracking-wider text-stone-400 font-semibold">
+                    Collection:
+                  </span>
+                  <span className="font-medium text-stone-800">
+                    {CATEGORY_TABS.find((c) => c.id === selectedCategory)?.label ||
+                      'All Collections'}
+                  </span>
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 text-[#9E7518] transition-transform duration-200 ${
+                      isCategoryOpen ? 'rotate-180' : ''
+                    }`}
+                  />
                 </button>
-              );
-            })}
-          </div>
 
-          {/* Tier 3: Sleek Toolbar (Count, Search, Sort, Reset) */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mt-6 pt-4 border-t border-stone-200/60">
-            {/* Left: Creations Count & Clear Tag */}
-            <div className="flex items-center gap-2.5 text-xs text-stone-500 font-light">
-              <span>
-                Showing{' '}
-                <strong className="text-stone-900 font-medium">{filteredProducts.length}</strong>{' '}
-                creations
-              </span>
+                {isCategoryOpen && (
+                  <div className="absolute left-0 top-full mt-2 w-56 bg-white/98 backdrop-blur-md rounded-2xl border border-[#C59B27]/30 shadow-xl py-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
+                    <div className="px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-stone-400 border-b border-stone-100">
+                      Select Collection
+                    </div>
+                    {CATEGORY_TABS.map((tab) => {
+                      const isSelected = selectedCategory === tab.id;
+                      return (
+                        <button
+                          key={tab.id}
+                          type="button"
+                          onClick={() => {
+                            onSelectCategory(tab.id);
+                            setIsCategoryOpen(false);
+                          }}
+                          className={`w-full text-left px-3.5 py-2 text-xs flex items-center justify-between cursor-pointer transition-colors ${
+                            isSelected
+                              ? 'bg-[#FAF5EE] text-[#9E7518] font-semibold'
+                              : 'text-stone-700 hover:bg-[#FAF5EE]/70 hover:text-[#9E7518]'
+                          }`}
+                        >
+                          <span>{tab.label}</span>
+                          {isSelected && <Check className="w-3.5 h-3.5 text-[#9E7518] shrink-0" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+
+              {/* Jewellery Type Dropdown */}
+              <div ref={subProductRef} className="relative">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsSubProductOpen((prev) => !prev);
+                    setIsCategoryOpen(false);
+                    setIsSortOpen(false);
+                  }}
+                  className="bg-white border border-[#C59B27]/30 hover:border-[#9E7518] text-xs rounded-full px-4 py-2 text-stone-700 hover:text-stone-900 focus:outline-none flex items-center gap-2 cursor-pointer transition-all duration-200 shadow-2xs hover:shadow-xs"
+                >
+                  <span className="text-[11px] uppercase tracking-wider text-stone-400 font-semibold">
+                    Type:
+                  </span>
+                  <span className="font-medium text-stone-800">
+                    {SUB_PRODUCTS_LIST.find((s) => s.id === selectedSubProduct)?.label ||
+                      'All Items'}
+                  </span>
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 text-[#9E7518] transition-transform duration-200 ${
+                      isSubProductOpen ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+
+                {isSubProductOpen && (
+                  <div className="absolute left-0 top-full mt-2 w-56 bg-white/98 backdrop-blur-md rounded-2xl border border-[#C59B27]/30 shadow-xl py-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
+                    <div className="px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-stone-400 border-b border-stone-100">
+                      Jewellery Category
+                    </div>
+                    {SUB_PRODUCTS_LIST.map((sub) => {
+                      const isSelected = selectedSubProduct === sub.id;
+                      return (
+                        <button
+                          key={sub.id}
+                          type="button"
+                          onClick={() => {
+                            onSelectSubProduct(sub.id);
+                            setIsSubProductOpen(false);
+                          }}
+                          className={`w-full text-left px-3.5 py-2 text-xs flex items-center justify-between cursor-pointer transition-colors ${
+                            isSelected
+                              ? 'bg-[#FAF5EE] text-[#9E7518] font-semibold'
+                              : 'text-stone-700 hover:bg-[#FAF5EE]/70 hover:text-[#9E7518]'
+                          }`}
+                        >
+                          <span>{sub.label}</span>
+                          {isSelected && <Check className="w-3.5 h-3.5 text-[#9E7518] shrink-0" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+
+              {/* Reset Filters button if any filter is active */}
               {hasActiveFilters && (
                 <button
+                  type="button"
                   onClick={handleResetFilters}
-                  className="inline-flex items-center gap-1 text-[11px] text-[#9E7518] hover:text-[#7A5A0F] font-medium underline underline-offset-2 ml-1 cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs text-[#9E7518] hover:text-[#7A5A0F] bg-[#FAF5EE] hover:bg-[#F3EAD8] rounded-full border border-[#C59B27]/30 transition-colors font-medium cursor-pointer"
                 >
                   <RotateCcw className="w-3 h-3" />
-                  <span>Reset filters</span>
+                  <span>Reset All</span>
                 </button>
               )}
             </div>
 
             {/* Right: Search & Sort Dropdown */}
-            <div className="flex items-center gap-2.5 w-full sm:w-auto justify-end">
+            <div className="flex items-center gap-2.5 flex-wrap w-full lg:w-auto justify-between lg:justify-end">
               <div className="relative flex-1 sm:w-56">
                 <Search className="w-3.5 h-3.5 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
@@ -183,7 +287,7 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
                   placeholder="Search pieces..."
                   value={searchFilter}
                   onChange={(e) => setSearchFilter(e.target.value)}
-                  className="w-full pl-8 pr-3 py-1.5 bg-white border border-stone-200/90 rounded-full text-xs text-stone-800 placeholder-stone-400 focus:outline-none focus:border-[#9E7518] focus:ring-1 focus:ring-[#9E7518] transition-all"
+                  className="w-full pl-8 pr-7 py-2 bg-white border border-stone-200/90 rounded-full text-xs text-stone-800 placeholder-stone-400 focus:outline-none focus:border-[#9E7518] focus:ring-1 focus:ring-[#9E7518] transition-all"
                 />
                 {searchFilter && (
                   <button
@@ -195,18 +299,59 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
                 )}
               </div>
 
-              <select
-                value={sortBy}
-                onChange={(e) =>
-                  setSortBy(e.target.value as 'featured' | 'price-asc' | 'price-desc' | 'rating')
-                }
-                className="bg-white border border-stone-200/90 text-xs rounded-full px-3.5 py-1.5 text-stone-700 focus:outline-none focus:border-[#9E7518] cursor-pointer"
-              >
-                <option value="featured">Featured</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
-                <option value="rating">Top Rated</option>
-              </select>
+              {/* Custom Luxury Sort Dropdown */}
+              <div ref={sortRef} className="relative shrink-0">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsSortOpen((prev) => !prev);
+                    setIsCategoryOpen(false);
+                    setIsSubProductOpen(false);
+                  }}
+                  className="bg-white border border-[#C59B27]/30 hover:border-[#9E7518] text-xs rounded-full px-4 py-2 text-stone-700 hover:text-stone-900 focus:outline-none flex items-center gap-2 cursor-pointer transition-all duration-200 shadow-2xs hover:shadow-xs"
+                >
+                  <span className="text-[11px] uppercase tracking-wider text-stone-400 font-semibold">
+                    Sort:
+                  </span>
+                  <span className="font-medium text-stone-800">
+                    {SORT_OPTIONS.find((opt) => opt.id === sortBy)?.label || 'Featured'}
+                  </span>
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 text-[#9E7518] transition-transform duration-200 ${
+                      isSortOpen ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+
+                {isSortOpen && (
+                  <div className="absolute right-0 top-full mt-2 w-48 bg-white/98 backdrop-blur-md rounded-2xl border border-[#C59B27]/30 shadow-xl py-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
+                    <div className="px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-stone-400 border-b border-stone-100">
+                      Sort By
+                    </div>
+                    {SORT_OPTIONS.map((opt) => {
+                      const isSelected = sortBy === opt.id;
+                      return (
+                        <button
+                          key={opt.id}
+                          type="button"
+                          onClick={() => {
+                            setSortBy(opt.id);
+                            setIsSortOpen(false);
+                          }}
+                          className={`w-full text-left px-3.5 py-2 text-xs flex items-center justify-between cursor-pointer transition-colors ${
+                            isSelected
+                              ? 'bg-[#FAF5EE] text-[#9E7518] font-semibold'
+                              : 'text-stone-700 hover:bg-[#FAF5EE]/70 hover:text-[#9E7518]'
+                          }`}
+                        >
+                          <span>{opt.label}</span>
+                          {isSelected && <Check className="w-3.5 h-3.5 text-[#9E7518] shrink-0" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -285,7 +430,7 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
                     <div className="w-full">
                       {/* Serif Heading */}
                       <h3 className="font-serif text-lg sm:text-xl font-normal text-[#1A1A1A] group-hover:text-[#9E7518] transition-colors line-clamp-1">
-                        {product.name}
+                        {product.shortName || product.name}
                       </h3>
 
                       {/* Price & Purity */}

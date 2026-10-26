@@ -88,7 +88,7 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
                       {product.category} • {product.subProduct}
                     </span>
                     <h4 className="text-xs font-serif font-bold text-[#0B2319] truncate">
-                      {product.name}
+                      {product.shortName || product.name}
                     </h4>
                     <p className="text-[11px] text-[#0B2319] font-bold">
                       {formatPrice(product.price)}

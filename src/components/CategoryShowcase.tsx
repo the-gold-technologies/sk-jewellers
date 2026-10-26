@@ -13,7 +13,7 @@ export const CategoryShowcase: React.FC<CategoryShowcaseProps> = ({ onSelectCate
     <section id="categories" className="py-14 sm:py-18 bg-[#FBF9F5] border-b border-[#C59B27]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header matching Aurelia reference */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <span className="text-[11px] uppercase font-bold tracking-[0.25em] text-[#9E7518] block mb-2">
             Shop By Category
           </span>
@@ -33,17 +33,15 @@ export const CategoryShowcase: React.FC<CategoryShowcaseProps> = ({ onSelectCate
               onClick={() => onSelectCategory(cat.id)}
               className="group flex flex-col items-center text-center cursor-pointer transition-all duration-300 focus:outline-none"
             >
-              {/* Circular Ring Frame */}
-              <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 border-2 border-stone-200 group-hover:border-[#9E7518] transition-all duration-300 shadow-xs group-hover:shadow-lg group-hover:scale-105 bg-white">
-                <div className="relative w-full h-full rounded-full overflow-hidden bg-stone-100">
-                  <Image
-                    src={cat.image}
-                    alt={cat.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
-                </div>
+              {/* Clean Borderless Circular Disc with Rich Photography Background */}
+              <div className="relative w-32 h-32 sm:w-36 sm:h-36 lg:w-[145px] lg:h-[145px] rounded-full overflow-hidden group-hover:scale-105 transition-transform duration-300 shadow-2xs group-hover:shadow-md">
+                <Image
+                  src={cat.image}
+                  alt={cat.name}
+                  fill
+                  sizes="(max-width: 640px) 128px, 156px"
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                />
               </div>
 
               {/* Title & Badge */}
