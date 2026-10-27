@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { Heart, Eye, ShoppingBag, Search, Check, RotateCcw, X, ChevronDown } from 'lucide-react';
+import { Eye, Search, Check, RotateCcw, X, ChevronDown } from 'lucide-react';
 import { Product, PRODUCTS_DATA, SUB_PRODUCTS_LIST } from '@/data/jewelleryData';
 
 interface ProductExplorerProps {
@@ -10,9 +10,6 @@ interface ProductExplorerProps {
   selectedSubProduct: string;
   onSelectCategory: (cat: string) => void;
   onSelectSubProduct: (sub: string) => void;
-  onAddToCart: (product: Product) => void;
-  onToggleWishlist: (product: Product) => void;
-  wishlistIds: string[];
   onQuickView: (product: Product) => void;
   currency: 'INR' | 'USD';
 }
@@ -38,9 +35,6 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
   selectedSubProduct,
   onSelectCategory,
   onSelectSubProduct,
-  onAddToCart,
-  onToggleWishlist,
-  wishlistIds,
   onQuickView,
   currency,
 }) => {
@@ -55,7 +49,6 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
   const categoryRef = useRef<HTMLDivElement>(null);
   const subProductRef = useRef<HTMLDivElement>(null);
   const sortRef = useRef<HTMLDivElement>(null);
-  const [addedAnimationId, setAddedAnimationId] = useState<string | null>(null);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -95,15 +88,6 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
       return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
     });
   }, [selectedCategory, selectedSubProduct, searchFilter, sortBy]);
-
-  const handleAddToCart = (e: React.MouseEvent, product: Product) => {
-    e.stopPropagation();
-    onAddToCart(product);
-    setAddedAnimationId(product.id);
-    setTimeout(() => {
-      setAddedAnimationId(null);
-    }, 1500);
-  };
 
   const formatPrice = (priceInINR: number) => {
     if (currency === 'USD') {
@@ -375,8 +359,6 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
             {filteredProducts.map((product) => {
-              const isWishlisted = wishlistIds.includes(product.id);
-
               return (
                 <div
                   key={product.id}
@@ -400,20 +382,6 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
                           {product.tag}
                         </span>
                       )}
-
-                      {/* Floating Wishlist Heart */}
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onToggleWishlist(product);
-                        }}
-                        className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/85 hover:bg-white text-stone-600 hover:text-rose-600 shadow-xs flex items-center justify-center transition-all backdrop-blur-xs hover:scale-110 cursor-pointer"
-                        aria-label="Wishlist toggle"
-                      >
-                        <Heart
-                          className={`w-4 h-4 ${isWishlisted ? 'fill-rose-600 text-rose-600' : ''}`}
-                        />
-                      </button>
 
                       {/* Floating Quick View Eye Icon on Hover */}
                       <div
@@ -450,7 +418,7 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
                       </span>
                     </div>
 
-                    {/* Centered 'Explore Now →' with Discreet Quick-Add Button */}
+                    {/* Centered 'Explore Now →' */}
                     <div className="w-full pt-3 mt-3 border-t border-stone-100 flex items-center justify-center relative">
                       <span className="group/link text-xs sm:text-[13px] font-medium tracking-wide text-stone-800 group-hover:text-[#9E7518] inline-flex items-center gap-1.5 transition-colors">
                         <span>Explore Now</span>
@@ -458,27 +426,6 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
                           →
                         </span>
                       </span>
-
-                      {/* Discreet 1-Click Quick Add to Cart Button */}
-                      <button
-                        onClick={(e) => handleAddToCart(e, product)}
-                        className={`absolute right-0 p-1.5 rounded-full transition-all duration-300 flex items-center gap-1 text-xs cursor-pointer ${
-                          addedAnimationId === product.id
-                            ? 'bg-emerald-600 text-white px-2'
-                            : 'bg-stone-100 hover:bg-[#9E7518] text-stone-700 hover:text-white'
-                        }`}
-                        aria-label="Add to cart"
-                        title="Add to cart"
-                      >
-                        {addedAnimationId === product.id ? (
-                          <>
-                            <Check className="w-3.5 h-3.5" />
-                            <span className="text-[10px] font-semibold">Added</span>
-                          </>
-                        ) : (
-                          <ShoppingBag className="w-3.5 h-3.5" />
-                        )}
-                      </button>
                     </div>
                   </div>
                 </div>

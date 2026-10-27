@@ -2,31 +2,23 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { X, Star, Heart, ShoppingBag, Sparkles, Check } from 'lucide-react';
+import { X, Star } from 'lucide-react';
 import { Product } from '@/data/jewelleryData';
 
 interface QuickViewModalProps {
   product: Product | null;
   onClose: () => void;
-  onAddToCart: (product: Product, quantity: number) => void;
-  onToggleWishlist: (product: Product) => void;
-  isWishlisted: boolean;
   currency: 'INR' | 'USD';
 }
 
 export const QuickViewModal: React.FC<QuickViewModalProps> = ({
   product,
   onClose,
-  onAddToCart,
-  onToggleWishlist,
-  isWishlisted,
   currency,
 }) => {
-  const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState<string>('');
   const [pincode, setPincode] = useState('');
   const [pincodeStatus, setPincodeStatus] = useState<string | null>(null);
-  const [added, setAdded] = useState(false);
 
   if (!product) return null;
 
@@ -46,12 +38,6 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
     } else {
       setPincodeStatus('Please enter a valid 6-digit pin code.');
     }
-  };
-
-  const handleAdd = () => {
-    onAddToCart(product, quantity);
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
   };
 
   return (
@@ -101,7 +87,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
           </div>
         </div>
 
-        {/* Right Column: Product Details & Purchase Actions */}
+        {/* Right Column: Product Details */}
         <div className="md:w-1/2 p-6 sm:p-8 overflow-y-auto space-y-5">
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#8C6411]">
@@ -195,62 +181,6 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
               <p className="text-[11px] text-emerald-700 font-medium mt-1">{pincodeStatus}</p>
             )}
           </form>
-
-          {/* Quantity and Actions */}
-          <div className="pt-2 space-y-3">
-            <div className="flex items-center gap-4">
-              <span className="text-xs font-medium text-stone-600">Quantity:</span>
-              <div className="flex items-center border border-stone-200 rounded-lg bg-white">
-                <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-2.5 py-1 text-stone-600 hover:bg-stone-100 rounded-l-lg"
-                >
-                  -
-                </button>
-                <span className="px-3 py-1 text-xs font-bold text-stone-800">{quantity}</span>
-                <button
-                  onClick={() => setQuantity(quantity + 1)}
-                  className="px-2.5 py-1 text-stone-600 hover:bg-stone-100 rounded-r-lg"
-                >
-                  +
-                </button>
-              </div>
-
-              {/* Wishlist button */}
-              <button
-                onClick={() => onToggleWishlist(product)}
-                className={`p-2 rounded-lg border transition-all flex items-center gap-1.5 text-xs font-medium ${
-                  isWishlisted
-                    ? 'border-rose-300 bg-rose-50 text-rose-600'
-                    : 'border-stone-200 bg-white text-stone-700 hover:text-rose-600'
-                }`}
-              >
-                <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-rose-600' : ''}`} />
-                <span>{isWishlisted ? 'Wishlisted' : 'Save'}</span>
-              </button>
-            </div>
-
-            <button
-              onClick={handleAdd}
-              className={`w-full py-3.5 rounded-xl font-medium text-xs sm:text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-md ${
-                added
-                  ? 'bg-emerald-700 text-white'
-                  : 'bg-[#0B2319] hover:bg-[#16402F] text-[#FAF7F2]'
-              }`}
-            >
-              {added ? (
-                <>
-                  <Check className="w-4 h-4" />
-                  <span>Added To Your Bag</span>
-                </>
-              ) : (
-                <>
-                  <ShoppingBag className="w-4 h-4 text-[#E5C378]" />
-                  <span>Add To Shopping Bag</span>
-                </>
-              )}
-            </button>
-          </div>
         </div>
       </div>
     </div>

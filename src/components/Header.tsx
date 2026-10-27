@@ -3,8 +3,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import Image from 'next/image';
 import {
-  ShoppingBag,
-  Heart,
   Search,
   Menu,
   X,
@@ -72,18 +70,10 @@ const SIGNATURE_COLLECTIONS = [
 ];
 
 interface HeaderProps {
-  cartCount: number;
-  wishlistCount: number;
-  onOpenCart: () => void;
-  onOpenWishlist: () => void;
   onSelectCategory: (category: string, subProduct?: string) => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  cartCount,
-  wishlistCount,
-  onOpenCart,
-  onOpenWishlist,
   onSelectCategory,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -363,7 +353,7 @@ export const Header: React.FC<HeaderProps> = ({
               </a>
             </nav>
 
-            {/* Utility Actions Cluster: Search, Wishlist, Cart, Mobile Toggle */}
+            {/* Utility Actions Cluster: Search, Mobile Toggle */}
             <div className="flex items-center gap-3 sm:gap-4 pl-4 sm:pl-6 border-l border-stone-200 shrink-0">
               {/* Search Trigger */}
               <button
@@ -374,36 +364,6 @@ export const Header: React.FC<HeaderProps> = ({
                 title="Search Jewelry"
               >
                 <Search className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.8]" />
-              </button>
-
-              {/* Wishlist Heart Icon */}
-              <button
-                type="button"
-                onClick={onOpenWishlist}
-                className="relative p-1.5 text-stone-700 hover:text-[#9A1E2E] transition-colors cursor-pointer"
-                aria-label="Wishlist"
-                title="Your Wishlist"
-              >
-                <Heart className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.8]" />
-                {wishlistCount > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-[#B81D24] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">
-                    {wishlistCount}
-                  </span>
-                )}
-              </button>
-
-              {/* Shopping Bag Icon with Badge */}
-              <button
-                type="button"
-                onClick={onOpenCart}
-                className="relative p-1.5 text-stone-700 hover:text-[#9A1E2E] transition-colors cursor-pointer"
-                aria-label="Shopping bag"
-                title="Your Shopping Cart"
-              >
-                <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.8]" />
-                <span className="absolute -top-0.5 -right-0.5 bg-[#B81D24] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">
-                  {cartCount}
-                </span>
               </button>
 
               {/* Mobile Menu Toggle Button */}
