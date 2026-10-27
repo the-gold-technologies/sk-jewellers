@@ -173,8 +173,8 @@ export const Header: React.FC<HeaderProps> = ({
     <div className="w-full bg-white border-b border-[#E8DAC2]/80 sticky top-0 z-50">
       {/* 1. TOP UTILITY BAR (Kalyan Jewellers Reference Style) */}
       {/* 1. TOP UTILITY BAR (Kalyan Jewellers Reference Style) */}
-      <div className="bg-[#FAF5EE] border-b border-[#E8DAC2]/60 py-2 px-4 sm:px-6 lg:px-8 hidden md:block">
-        <div className="max-w-7xl mx-auto flex items-center justify-between text-[11px] font-medium tracking-wide text-stone-600">
+      <div className="bg-[#FAF5EE] border-b border-[#E8DAC2]/60 py-2 hidden md:block">
+        <div className="max-w-7xl mx-auto px-6 sm:px-12 flex items-center justify-between text-[11px] font-medium tracking-wide text-stone-600">
           {/* Left: Only Live Gold Rate Display */}
           <div className="flex items-center">
             <div className="inline-flex items-center gap-2 text-[#8C6411] font-semibold">
@@ -251,8 +251,8 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* 2. MAIN HEADER NAVIGATION BAR (12-Column Grid Layout: 5 cols Left Nav, 2 cols Center Logo, 5 cols Right Nav & Icons) */}
-      <header className="px-4 sm:px-6 lg:px-8 py-3 sm:py-4 bg-white/98 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto relative flex lg:grid lg:grid-cols-12 items-center justify-between">
+      <header className="py-3 sm:py-4 bg-white/98 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-6 sm:px-12 relative flex lg:grid lg:grid-cols-12 items-center justify-between">
           {/* LEFT NAVIGATION LINKS (5 cols) */}
           <nav className="col-span-5 hidden lg:flex items-center gap-7 xl:gap-11 text-xs xl:text-[13px] font-bold text-[#1C1814] tracking-[0.14em] uppercase">
             <a
@@ -620,7 +620,7 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Quick Search Slideout Bar */}
         {searchOpen && (
-          <div className="max-w-7xl mx-auto mt-3 pt-3 border-t border-stone-100 animate-in fade-in duration-150">
+          <div className="max-w-7xl mx-auto px-6 sm:px-12 mt-3 pt-3 border-t border-stone-100 animate-in fade-in duration-150">
             <form onSubmit={handleSearchSubmit} className="relative flex items-center">
               <Search className="absolute left-3.5 w-4 h-4 text-stone-400" />
               <input

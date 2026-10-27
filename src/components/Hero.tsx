@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 interface HeroProps {
   onExploreClick: () => void;
@@ -20,26 +20,29 @@ interface HeroBanner {
   cta: string;
   category?: string;
   tone: 'light' | 'dark';
+  /** Solid backdrop behind the copy, sampled from the photo's edge so the two blend */
+  panel: string;
   objectPosition: string;
 }
 
 const HERO_BANNERS: HeroBanner[] = [
   {
     id: 'made-for-you',
-    image: '/images/luxora-hero.jpg',
-    alt: 'Model wearing diamond chandelier earrings and teardrop pendant',
+    image: '/images/heart-pendant.jpg',
+    alt: 'Pave diamond heart pendant on a gold chain',
     kicker: 'Timeless Beauty,',
     title: 'Made Just',
     highlight: 'For You',
     subtitle: 'BIS hallmarked gold and sterling silver, handcrafted for every precious moment.',
     cta: 'Shop Collection',
     tone: 'light',
-    objectPosition: 'object-[70%_25%] lg:object-[center_20%]',
+    panel: '#C0AB92',
+    objectPosition: 'object-center',
   },
   {
     id: 'muhurat-bridal',
-    image: '/images/gold-choker.jpg',
-    alt: 'Kundan gold bridal choker with emerald drops',
+    image: '/images/gold-jhumkas.jpg',
+    alt: 'Temple gold jhumkas on maroon silk',
     kicker: 'The Muhurat Bridal Edit',
     title: 'Gold for',
     highlight: 'Every Vow',
@@ -47,6 +50,7 @@ const HERO_BANNERS: HeroBanner[] = [
     cta: 'Explore Bridal',
     category: 'Gold',
     tone: 'dark',
+    panel: '#541E1F',
     objectPosition: 'object-center',
   },
   {
@@ -60,19 +64,21 @@ const HERO_BANNERS: HeroBanner[] = [
     cta: 'Shop Idols',
     category: 'Idols',
     tone: 'light',
+    panel: '#D5C9B8',
     objectPosition: 'object-center',
   },
   {
     id: 'sterling-everyday',
-    image: '/images/silver-chain-layer.jpg',
-    alt: 'Layered sterling silver chains',
+    image: '/images/silver-solitaire-ring.jpg',
+    alt: 'Sterling silver ring with pink stone halo',
     kicker: 'Sterling Silver 925',
     title: 'Everyday',
     highlight: 'Elegance',
     subtitle: 'Lightweight chains, studs and payals made to be worn every single day.',
     cta: 'Shop Silver',
     category: 'Silver',
-    tone: 'dark',
+    tone: 'light',
+    panel: '#E3E3DF',
     objectPosition: 'object-center',
   },
   {
@@ -86,7 +92,8 @@ const HERO_BANNERS: HeroBanner[] = [
     cta: 'Discover Now',
     category: 'Electroplated',
     tone: 'light',
-    objectPosition: 'object-center',
+    panel: '#D1CCC2',
+    objectPosition: 'object-[40%_center]',
   },
 ];
 
@@ -130,9 +137,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onCategoryClick }) =
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={(e) => (touchStartX.current = e.touches[0].clientX)}
       onTouchEnd={handleTouchEnd}
-      className="relative bg-[#FAF5EE]"
+      className="relative"
     >
-      <div className="relative w-full h-[460px] sm:h-[500px] lg:h-[560px] overflow-hidden group/hero">
+      <div className="relative w-full h-[600px] sm:h-[620px] lg:h-[560px] overflow-hidden">
         {HERO_BANNERS.map((banner, index) => {
           const isActive = index === activeIndex;
           const isDark = banner.tone === 'dark';
@@ -148,7 +155,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onCategoryClick }) =
                 isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
-              <div className="absolute inset-0 lg:left-[38%]">
+              <div className="absolute inset-0" style={{ backgroundColor: banner.panel }} />
+
+              {/* Photo sits beside the copy (below on mobile); only its inner edge feathers into the panel */}
+              <div className="absolute inset-x-0 top-0 h-[44%] lg:h-full lg:left-[40%] [mask-image:linear-gradient(to_top,transparent,black_18%)] lg:[mask-image:linear-gradient(to_right,transparent,black_14%)]">
                 <Image
                   src={banner.image}
                   alt={banner.alt}
@@ -161,24 +171,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onCategoryClick }) =
                 />
               </div>
 
-              {/* Tone-matched fade from the text panel into the image */}
-              <div
-                className={`absolute inset-0 hidden lg:block bg-gradient-to-r ${
-                  isDark
-                    ? 'from-[#28050B] from-35% via-[#28050B]/80 via-45% to-transparent to-70%'
-                    : 'from-[#FAF5EE] from-35% via-[#FAF5EE]/85 via-45% to-transparent to-70%'
-                }`}
-              />
-              <div
-                className={`absolute inset-0 lg:hidden bg-gradient-to-t ${
-                  isDark
-                    ? 'from-[#28050B] via-[#28050B]/75 to-[#28050B]/10'
-                    : 'from-[#FAF5EE] via-[#FAF5EE]/80 to-[#FAF5EE]/10'
-                }`}
-              />
-
               {/* Banner copy */}
-              <div className="relative h-full max-w-7xl mx-auto flex items-end lg:items-center px-6 sm:px-12 pb-16 lg:pb-0">
+              <div className="relative h-full max-w-7xl mx-auto flex items-end lg:items-center px-6 sm:px-12 pb-14 lg:pb-0">
                 <div
                   className={`max-w-md text-center lg:text-left mx-auto lg:mx-0 transition-all duration-700 delay-150 ${
                     isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -186,7 +180,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onCategoryClick }) =
                 >
                   <p
                     className={`font-serif italic text-lg sm:text-xl tracking-wide ${
-                      isDark ? 'text-[#E8C882]' : 'text-[#A67C1E]'
+                      isDark ? 'text-[#E8C882]' : 'text-[#6E5010]'
                     }`}
                   >
                     {banner.kicker}
@@ -202,7 +196,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onCategoryClick }) =
                   </Heading>
                   <p
                     className={`text-sm sm:text-base font-light leading-relaxed mt-4 ${
-                      isDark ? 'text-[#F2DFBA]/90' : 'text-stone-600'
+                      isDark ? 'text-[#F2DFBA]/90' : 'text-stone-800'
                     }`}
                   >
                     {banner.subtitle}
@@ -225,24 +219,6 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onCategoryClick }) =
             </div>
           );
         })}
-
-        {/* Prev / Next arrows */}
-        <button
-          type="button"
-          onClick={prev}
-          aria-label="Previous banner"
-          className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-stone-800 border border-[#E8DAC2] shadow-sm hidden sm:flex items-center justify-center opacity-0 group-hover/hero:opacity-100 focus-visible:opacity-100 transition-opacity cursor-pointer"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-        <button
-          type="button"
-          onClick={next}
-          aria-label="Next banner"
-          className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-stone-800 border border-[#E8DAC2] shadow-sm hidden sm:flex items-center justify-center opacity-0 group-hover/hero:opacity-100 focus-visible:opacity-100 transition-opacity cursor-pointer"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
 
         {/* Pagination dots */}
         <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-black/20 backdrop-blur-sm px-3 py-2 rounded-full">

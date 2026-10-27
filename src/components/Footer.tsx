@@ -17,7 +17,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
       id="contact-footer"
       className="bg-[#181D1A] text-stone-200 pt-16 pb-12 border-t-2 border-[#C59B27]/40"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12">
         {/* Main Clean 3-Column Luxury Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/15">
           {/* Column 1: Brand & Heritage (5 cols) */}

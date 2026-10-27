@@ -22,7 +22,7 @@ export const Newsletter: React.FC = () => {
 
   return (
     <section id="contact-section" className="py-20 bg-[#FBF9F5] border-t border-[#E8DAC2]/80">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12">
         {/* Open, unboxed 2-column layout */}
         <div className="flex max-[1050px]:flex-col gap-12 lg:gap-16 items-center">
           {/* Left Column: Brand & Concierge Info (5 cols) */}

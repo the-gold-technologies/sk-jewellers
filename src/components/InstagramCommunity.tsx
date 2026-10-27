@@ -94,7 +94,7 @@ export const InstagramCommunity: React.FC = () => {
 
   return (
     <section className="py-14 sm:py-18 bg-[#FBF9F5] border-t border-[#E8DAC2]/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-14 xl:gap-16">
           {/* Left Side: Large 3-Image Carousel with Chevrons */}
           <div className="flex items-center justify-center w-full lg:w-[68%] max-w-[820px]">

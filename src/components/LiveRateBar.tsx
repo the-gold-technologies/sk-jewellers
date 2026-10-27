@@ -7,7 +7,7 @@ import { LIVE_BULLION_RATES } from '@/data/jewelleryData';
 export const LiveRateBar: React.FC = () => {
   return (
     <section id="live-rates" className="bg-[#0B2319] text-white py-4 border-y border-[#C59B27]/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Label */}
           <div className="flex items-center gap-2.5">

@@ -7,7 +7,7 @@ import { ShieldCheck, Award, Sparkles, Scale, RefreshCw } from 'lucide-react';
 export const HeritageCraftsmanship: React.FC = () => {
   return (
     <section id="heritage" className="py-20 bg-[#FAF7F2] border-t border-[#C59B27]/15">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Workshop Artisan & Wax Seal Arch */}
           <div className="lg:col-span-5 relative">

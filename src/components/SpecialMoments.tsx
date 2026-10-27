@@ -118,7 +118,7 @@ export const SpecialMoments: React.FC<SpecialMomentsProps> = ({ onSelectCategory
         - Minimalist clean icons matching the reference
       */}
       <section className="w-full bg-[#FAF5EE] border-b border-[#E8DAC2]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 sm:py-9">
+        <div className="max-w-7xl mx-auto px-6 sm:px-12 py-7 sm:py-9">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-stone-200/90 text-center">
             {/* 1. Ethically Sourced */}
             <div className="px-3 sm:px-6 flex flex-col items-center">

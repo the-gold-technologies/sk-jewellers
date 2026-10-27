@@ -8,7 +8,7 @@ import { TESTIMONIALS_DATA } from '@/data/jewelleryData';
 export const Testimonials: React.FC = () => {
   return (
     <section className="py-20 bg-[#FBF9F5] border-t border-[#C59B27]/15">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12">
         {/* Title */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#E5C378]/25 text-[#8C6411] text-xs font-semibold uppercase tracking-wider mb-3">

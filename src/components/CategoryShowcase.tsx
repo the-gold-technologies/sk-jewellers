@@ -11,7 +11,7 @@ interface CategoryShowcaseProps {
 export const CategoryShowcase: React.FC<CategoryShowcaseProps> = ({ onSelectCategory }) => {
   return (
     <section id="categories" className="py-14 sm:py-18 bg-[#FBF9F5] border-b border-[#C59B27]/15">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12">
         {/* Header matching Aurelia reference */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <span className="text-[11px] uppercase font-bold tracking-[0.25em] text-[#9E7518] block mb-2">
