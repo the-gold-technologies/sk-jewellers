@@ -17,9 +17,6 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
   currency,
 }) => {
   const [activeImage, setActiveImage] = useState<string>('');
-  const [pincode, setPincode] = useState('');
-  const [pincodeStatus, setPincodeStatus] = useState<string | null>(null);
-
   if (!product) return null;
 
   const currentImg = activeImage || product.image;
@@ -29,15 +26,6 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
       return `$${Math.round(val / 84).toLocaleString('en-US')}`;
     }
     return `₹${val.toLocaleString('en-IN')}`;
-  };
-
-  const handlePincodeCheck = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (pincode.length === 6) {
-      setPincodeStatus('Available for 48-Hour Insured Express Delivery to your area!');
-    } else {
-      setPincodeStatus('Please enter a valid 6-digit pin code.');
-    }
   };
 
   return (
@@ -155,32 +143,6 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
               </span>
             </div>
           </div>
-
-          {/* Pincode checker */}
-          <form onSubmit={handlePincodeCheck} className="space-y-1">
-            <label className="text-[11px] font-medium text-stone-500 uppercase tracking-wider block">
-              Check Insured Delivery Pincode:
-            </label>
-            <div className="flex gap-2">
-              <input
-                type="text"
-                maxLength={6}
-                placeholder="Enter 6-digit pin..."
-                value={pincode}
-                onChange={(e) => setPincode(e.target.value)}
-                className="w-40 px-3 py-1.5 bg-white border border-stone-200 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-[#C59B27]"
-              />
-              <button
-                type="submit"
-                className="bg-stone-200 hover:bg-stone-300 text-stone-800 text-xs px-3 py-1.5 rounded-lg font-medium transition-colors"
-              >
-                Check
-              </button>
-            </div>
-            {pincodeStatus && (
-              <p className="text-[11px] text-emerald-700 font-medium mt-1">{pincodeStatus}</p>
-            )}
-          </form>
         </div>
       </div>
     </div>
