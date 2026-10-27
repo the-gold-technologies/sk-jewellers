@@ -26,7 +26,7 @@ export const CategoryShowcase: React.FC<CategoryShowcaseProps> = ({ onSelectCate
         </div>
 
         {/* Circular Discs Category Row (Aurelia Reference style) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 justify-items-center mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 justify-items-center mb-12">
           {CATEGORIES_DATA.map((cat) => (
             <button
               key={cat.id}
@@ -34,7 +34,7 @@ export const CategoryShowcase: React.FC<CategoryShowcaseProps> = ({ onSelectCate
               className="group flex flex-col items-center text-center cursor-pointer transition-all duration-300 focus:outline-none"
             >
               {/* Clean Borderless Circular Disc with Rich Photography Background */}
-              <div className="relative w-32 h-32 sm:w-36 sm:h-36 lg:w-[145px] lg:h-[145px] rounded-full overflow-hidden group-hover:scale-105 transition-transform duration-300 shadow-2xs group-hover:shadow-md">
+              <div className="relative w-32 h-32 sm:w-36 sm:h-36 lg:w-[135px] lg:h-[135px] rounded-full overflow-hidden group-hover:scale-105 transition-transform duration-300 shadow-2xs group-hover:shadow-md">
                 <Image
                   src={cat.image}
                   alt={cat.name}

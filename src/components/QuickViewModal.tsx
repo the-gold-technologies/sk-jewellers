@@ -105,7 +105,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
         <div className="md:w-1/2 p-6 sm:p-8 overflow-y-auto space-y-5">
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#8C6411]">
-              <Sparkles className="w-3.5 h-3.5" />
+              {/* <Sparkles className="w-3.5 h-3.5" /> */}
               <span>
                 {product.category} Jewellery • {product.subProduct}
               </span>

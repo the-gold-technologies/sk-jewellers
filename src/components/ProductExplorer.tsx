@@ -384,7 +384,7 @@ export const ProductExplorer: React.FC<ProductExplorerProps> = ({
                   onClick={() => onQuickView(product)}
                 >
                   {/* Top Image Container */}
-                  <div className="p-3 sm:p-4 pb-0">
+                  <div className="p-3 sm:px-4 sm:pt-4 pb-0 ">
                     <div className="relative aspect-square w-full rounded-xl sm:rounded-2xl overflow-hidden bg-[#FAF7F2]">
                       <Image
                         src={product.image}

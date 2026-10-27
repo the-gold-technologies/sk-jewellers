@@ -85,6 +85,17 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     bannerHighlight: 'Temple Artisan Sculpted Idols',
     purityBadge: 'Consecrated Sacred Purity',
   },
+  {
+    id: 'Idols',
+    name: 'Divine Idols & Murti',
+    tagline: 'Auspicious Silver & Gold Consecrated Idols',
+    description:
+      'Sculpted by generational temple artisans — Lord Ganesha, Goddess Lakshmi, and Bal Gopal in pure sterling silver and gold finish.',
+    image: '/images/silver-ganesha.jpg',
+    subProducts: ['Idols', 'Utensils'],
+    bannerHighlight: 'Temple Artisan Sculpted Idols',
+    purityBadge: 'Consecrated Sacred Purity',
+  },
 ];
 
 export const SUB_PRODUCTS_LIST = [

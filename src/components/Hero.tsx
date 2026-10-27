@@ -1,126 +1,263 @@
 'use client';
 
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface HeroProps {
   onExploreClick: () => void;
   onCategoryClick: (category: string) => void;
 }
 
+interface HeroBanner {
+  id: string;
+  image: string;
+  alt: string;
+  kicker: string;
+  title: string;
+  highlight: string;
+  subtitle: string;
+  cta: string;
+  category?: string;
+  tone: 'light' | 'dark';
+  objectPosition: string;
+}
+
+const HERO_BANNERS: HeroBanner[] = [
+  {
+    id: 'made-for-you',
+    image: '/images/luxora-hero.jpg',
+    alt: 'Model wearing diamond chandelier earrings and teardrop pendant',
+    kicker: 'Timeless Beauty,',
+    title: 'Made Just',
+    highlight: 'For You',
+    subtitle: 'BIS hallmarked gold and sterling silver, handcrafted for every precious moment.',
+    cta: 'Shop Collection',
+    tone: 'light',
+    objectPosition: 'object-[70%_25%] lg:object-[center_20%]',
+  },
+  {
+    id: 'muhurat-bridal',
+    image: '/images/gold-choker.jpg',
+    alt: 'Kundan gold bridal choker with emerald drops',
+    kicker: 'The Muhurat Bridal Edit',
+    title: 'Gold for',
+    highlight: 'Every Vow',
+    subtitle: 'Up to 25% off on making charges across 22K bridal sets.',
+    cta: 'Explore Bridal',
+    category: 'Gold',
+    tone: 'dark',
+    objectPosition: 'object-center',
+  },
+  {
+    id: 'devam-temple',
+    image: '/images/silver-ganesha.jpg',
+    alt: 'Pure silver Ganesha idol',
+    kicker: 'Devam Temple Silver',
+    title: 'Divinity in',
+    highlight: 'Pure Silver',
+    subtitle: 'Sacred idols and puja essentials, crafted to be passed down for generations.',
+    cta: 'Shop Idols',
+    category: 'Idols',
+    tone: 'light',
+    objectPosition: 'object-center',
+  },
+  {
+    id: 'sterling-everyday',
+    image: '/images/silver-chain-layer.jpg',
+    alt: 'Layered sterling silver chains',
+    kicker: 'Sterling Silver 925',
+    title: 'Everyday',
+    highlight: 'Elegance',
+    subtitle: 'Lightweight chains, studs and payals made to be worn every single day.',
+    cta: 'Shop Silver',
+    category: 'Silver',
+    tone: 'dark',
+    objectPosition: 'object-center',
+  },
+  {
+    id: 'little-luxuries',
+    image: '/images/electro-emerald-ring.jpg',
+    alt: 'Emerald statement cocktail ring',
+    kicker: 'Little Luxuries',
+    title: 'Statement',
+    highlight: 'Sparkle',
+    subtitle: 'Electroplated designer pieces that bring the glamour without the price.',
+    cta: 'Discover Now',
+    category: 'Electroplated',
+    tone: 'light',
+    objectPosition: 'object-center',
+  },
+];
+
+const AUTOPLAY_MS = 5500;
+
 export const Hero: React.FC<HeroProps> = ({ onExploreClick, onCategoryClick }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+  const total = HERO_BANNERS.length;
+
+  const goTo = useCallback((index: number) => setActiveIndex((index + total) % total), [total]);
+  const next = useCallback(() => setActiveIndex((i) => (i + 1) % total), [total]);
+  const prev = useCallback(() => setActiveIndex((i) => (i - 1 + total) % total), [total]);
+
+  useEffect(() => {
+    if (isPaused) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const timer = setTimeout(next, AUTOPLAY_MS);
+    return () => clearTimeout(timer);
+  }, [activeIndex, isPaused, next]);
+
+  const handleBannerClick = (banner: HeroBanner) => {
+    if (banner.category) onCategoryClick(banner.category);
+    else onExploreClick();
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(delta) > 50) (delta < 0 ? next : prev)();
+    touchStartX.current = null;
+  };
+
   return (
     <section
       id="hero"
-      className="relative bg-[#FAF5EE] overflow-hidden min-h-[540px] lg:min-h-[620px] flex flex-col justify-center"
+      aria-roledescription="carousel"
+      aria-label="Featured collections"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={(e) => (touchStartX.current = e.touches[0].clientX)}
+      onTouchEnd={handleTouchEnd}
+      className="relative bg-[#FAF5EE]"
     >
-      {/* Background Model Image Bleeding From Top to Bottom on Right */}
-      <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[62%] h-full pointer-events-none select-none z-0">
-        <Image
-          src="/images/luxora-hero.jpg"
-          alt="SK Jewellers Model Wearing Diamond Chandelier Earrings and Teardrop Pendant"
-          fill
-          priority
-          className="object-cover object-[70%_25%] lg:object-[center_20%]"
-        />
-
-        {/* Seamless Soft Fade & Blurriness from Right Image into Left Cream Background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF5EE] via-[#FAF5EE]/90 via-30% sm:via-25% to-transparent hidden lg:block" />
-        {/* Mobile / Tablet vertical overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FAF5EE]/80 via-[#FAF5EE]/95 to-[#FAF5EE] lg:hidden" />
-      </div>
-
-      {/* Main Hero Content Area */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 w-full py-16 sm:py-24 relative z-10">
-        <div className="max-w-xl xl:max-w-2xl text-center lg:text-left space-y-5">
-          {/* 1. Italic Kicker: Timeless Beauty, */}
-          <p className="font-serif italic text-xl sm:text-2xl text-[#A67C1E] font-normal tracking-wide">
-            Timeless Beauty,
-          </p>
-
-          {/* 2. Main Headline: Made Just ✦ For You */}
-          <h1 className="font-serif text-5xl sm:text-6xl md:text-[68px] lg:text-[74px] xl:text-[80px] font-normal text-[#1A1815] tracking-tight leading-[1.05]">
-            Made Just
-            <span className="inline-block text-[#C59B27] text-2xl sm:text-3xl lg:text-4xl ml-2 align-super select-none animate-pulse">
-              ✦
-            </span>
-            <br />
-            <span className="font-serif font-bold text-[#1A1815]">For You</span>
-          </h1>
-
-          {/* 3. Dainty Vintage Gold Divider Motif */}
-          <div className="flex items-center justify-center lg:justify-start py-1">
-            <svg
-              className="w-48 sm:w-56 h-5 text-[#C59B27]"
-              viewBox="0 0 220 22"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+      <div className="relative w-full h-[460px] sm:h-[500px] lg:h-[560px] overflow-hidden group/hero">
+        {HERO_BANNERS.map((banner, index) => {
+          const isActive = index === activeIndex;
+          const isDark = banner.tone === 'dark';
+          const Heading = index === 0 ? 'h1' : 'h2';
+          return (
+            <div
+              key={banner.id}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${index + 1} of ${total}`}
+              aria-hidden={!isActive}
+              className={`absolute inset-0 transition-opacity duration-700 ease-out ${
+                isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+              }`}
             >
-              {/* Left flourish line */}
-              <path
-                d="M12 11 C 45 11, 65 7, 95 11"
-                stroke="currentColor"
-                strokeWidth="1.3"
-                strokeLinecap="round"
+              <div className="absolute inset-0 lg:left-[38%]">
+                <Image
+                  src={banner.image}
+                  alt={banner.alt}
+                  fill
+                  preload={index === 0}
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                  className={`object-cover ${banner.objectPosition} transition-transform duration-[6000ms] ease-out ${
+                    isActive ? 'scale-105' : 'scale-100'
+                  }`}
+                />
+              </div>
+
+              {/* Tone-matched fade from the text panel into the image */}
+              <div
+                className={`absolute inset-0 hidden lg:block bg-gradient-to-r ${
+                  isDark
+                    ? 'from-[#28050B] from-35% via-[#28050B]/80 via-45% to-transparent to-70%'
+                    : 'from-[#FAF5EE] from-35% via-[#FAF5EE]/85 via-45% to-transparent to-70%'
+                }`}
               />
-              <circle cx="12" cy="11" r="2.2" fill="currentColor" />
-              <path d="M26 9 Q 31 5 36 9" stroke="currentColor" strokeWidth="1" fill="none" />
-
-              {/* Diamond Center 4-Point Star */}
-              <path
-                d="M110 2 L 113.5 9 L 120 11 L 113.5 13 L 110 20 L 106.5 13 L 100 11 L 106.5 9 Z"
-                fill="currentColor"
+              <div
+                className={`absolute inset-0 lg:hidden bg-gradient-to-t ${
+                  isDark
+                    ? 'from-[#28050B] via-[#28050B]/75 to-[#28050B]/10'
+                    : 'from-[#FAF5EE] via-[#FAF5EE]/80 to-[#FAF5EE]/10'
+                }`}
               />
 
-              {/* Right flourish line */}
-              <path
-                d="M125 11 C 155 7, 175 11, 208 11"
-                stroke="currentColor"
-                strokeWidth="1.3"
-                strokeLinecap="round"
-              />
-              <circle cx="208" cy="11" r="2.2" fill="currentColor" />
-              <path d="M184 9 Q 189 5 194 9" stroke="currentColor" strokeWidth="1" fill="none" />
-            </svg>
-          </div>
+              {/* Banner copy */}
+              <div className="relative h-full max-w-7xl mx-auto flex items-end lg:items-center px-6 sm:px-12 pb-16 lg:pb-0">
+                <div
+                  className={`max-w-md text-center lg:text-left mx-auto lg:mx-0 transition-all duration-700 delay-150 ${
+                    isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  }`}
+                >
+                  <p
+                    className={`font-serif italic text-lg sm:text-xl tracking-wide ${
+                      isDark ? 'text-[#E8C882]' : 'text-[#A67C1E]'
+                    }`}
+                  >
+                    {banner.kicker}
+                  </p>
+                  <Heading
+                    className={`font-serif text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.05] mt-2 ${
+                      isDark ? 'text-white' : 'text-[#1A1815]'
+                    }`}
+                  >
+                    {banner.title}
+                    <br />
+                    <span className="font-bold">{banner.highlight}</span>
+                  </Heading>
+                  <p
+                    className={`text-sm sm:text-base font-light leading-relaxed mt-4 ${
+                      isDark ? 'text-[#F2DFBA]/90' : 'text-stone-600'
+                    }`}
+                  >
+                    {banner.subtitle}
+                  </p>
+                  <button
+                    type="button"
+                    tabIndex={isActive ? 0 : -1}
+                    onClick={() => handleBannerClick(banner)}
+                    className={`mt-6 inline-flex items-center gap-2.5 px-7 py-3 rounded-full text-sm font-medium tracking-wide shadow-md hover:shadow-lg transition-all cursor-pointer ${
+                      isDark
+                        ? 'bg-[#C59B27] hover:bg-[#B88728] text-[#28050B]'
+                        : 'bg-[#B88728] hover:bg-[#A3741E] text-white'
+                    }`}
+                  >
+                    <span>{banner.cta}</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        })}
 
-          {/* 4. Subtitle with 2 Lines of Rich Description */}
-          <p className="text-stone-600 text-sm sm:text-base font-light leading-relaxed max-w-lg mx-auto lg:mx-0">
-            Discover exquisite jewelry crafted to celebrate every precious moment of your life,
-            handcrafted in pure BIS hallmarked gold and sterling silver.
-          </p>
+        {/* Prev / Next arrows */}
+        <button
+          type="button"
+          onClick={prev}
+          aria-label="Previous banner"
+          className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-stone-800 border border-[#E8DAC2] shadow-sm hidden sm:flex items-center justify-center opacity-0 group-hover/hero:opacity-100 focus-visible:opacity-100 transition-opacity cursor-pointer"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <button
+          type="button"
+          onClick={next}
+          aria-label="Next banner"
+          className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-stone-800 border border-[#E8DAC2] shadow-sm hidden sm:flex items-center justify-center opacity-0 group-hover/hero:opacity-100 focus-visible:opacity-100 transition-opacity cursor-pointer"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
 
-          {/* 5. Shop Collection Button (Square Styled) */}
-          <div className="flex items-center justify-center lg:justify-start pt-2">
+        {/* Pagination dots */}
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-black/20 backdrop-blur-sm px-3 py-2 rounded-full">
+          {HERO_BANNERS.map((banner, index) => (
             <button
-              onClick={onExploreClick}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#B88728] hover:bg-[#A3741E] text-white px-8 py-3.5 rounded-full font-medium text-sm sm:text-base tracking-wide transition-all shadow-md hover:shadow-lg duration-200"
-            >
-              <span>Shop Collection</span>
-              <ArrowRight className="w-4 h-4 text-white" />
-            </button>
-          </div>
-
-          {/* Category Quick Badges */}
-          <div className="pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs text-stone-500">
-            <span className="font-serif italic text-sm mr-1 text-stone-400">Collections:</span>
-            {[
-              { id: 'Gold', label: 'Gold Jewellery' },
-              { id: 'Silver', label: 'Sterling Silver' },
-              { id: 'Electroplated', label: 'Electroplated' },
-              { id: 'Utensils', label: 'Puja Utensils' },
-              { id: 'Idols', label: 'Divine Idols' },
-            ].map((item) => (
-              <button
-                key={item.id}
-                onClick={() => onCategoryClick(item.id)}
-                className="bg-white/90 hover:bg-[#F3E5AB]/60 text-stone-700 hover:text-black px-3.5 py-1 rounded-full border border-[#E8DAC2] text-xs font-medium transition-all shadow-2xs"
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
+              key={banner.id}
+              type="button"
+              onClick={() => goTo(index)}
+              aria-label={`Go to banner ${index + 1}`}
+              aria-current={index === activeIndex}
+              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                index === activeIndex ? 'w-6 bg-white' : 'w-1.5 bg-white/55 hover:bg-white/80'
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>
